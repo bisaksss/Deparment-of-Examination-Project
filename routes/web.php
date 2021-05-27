@@ -18,3 +18,31 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+
+
+
+Route::get('/ol_paper_bundel', function () {
+    return view('ol_paper_bundel');
+    
+});
+
+
+Route::get('/al_paper_bundel', function () {
+    return view('al_paper_bundel');
+    
+});
+
+Route::get('/mannage_paper_bundle', function () {
+    return view('mannage_paper_bundle');
+    
+});
+
+Route::get('/genarate_qr_code', function () {
+    return view('genarate_qr_code');
+    
+});
+
+Route::post('/add_ol_paper_details', 'manage_paper_bundel_controller@store');
+
