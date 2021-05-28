@@ -64,6 +64,7 @@
         </style>
     </head>
     <body>
+ 
         <div class="flex-center position-ref full-height">
             
 
@@ -79,7 +80,7 @@
                     @else
                         <a href="{{ route('login') }}"><button type="button" class="btn btn-primary">Login</button></a>
 
-                      <!--  @if (Route::has('register'))
+                       <!-- @if (Route::has('register'))
                             <a href="{{ route('register') }}">Register</a>
                         @endif-->
                     @endauth
@@ -94,8 +95,9 @@
                     <a href="https://nova.laravel.com">Nova</a>
                     <a href="https://forge.laravel.com">Forge</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-            </div>-->
+                </div>-->
+            </div>
         </div>
+
     </body>
 </html>
