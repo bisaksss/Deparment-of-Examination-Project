@@ -2,20 +2,8 @@
 
 @section('content')
 <div class="container">
-<form action="" method="">
-<div class="checkbox">
-      <label><input type="checkbox" value="" name="ol" class="">O/L</label>
-    </div>
-    <div class="checkbox">
-      <label><input type="checkbox" value="" name="al" class="">A/L</label>
-    </div>
- 
-  
-  <input style="width:200px" type="text" name="year" class="form-control" value="Year,Ex:2020/2019/2018">
-  <br>
-  <input type="submit" value="Submit">
-</form> 
-<br>
+
+
     <div class="row justify-content-center">
         <!-- <div class="col-md-8">
             <div class="card">
@@ -42,9 +30,9 @@
           
                         </div>
                      </div>&nbsp;
-                    <a href="/mannage_paper_bundle"><button type="button" class="btn btn-outline-secondary">Set places to Marking</button></a>&nbsp;
-                    <a href="/genarate_qr_code"> <button type="button" class="btn btn-outline-secondary">Mannage Papper Bundle</button></a>&nbsp;
-                    <a href="#"><button type="button" class="btn btn-outline-secondary">Read Barcode</button></a>&nbsp;
+                    <a href="/set_place_to_marking"><button type="button" class="btn btn-outline-secondary">Set places to Marking</button></a>&nbsp;
+                    <a href="/genarate_qr_code"> <button type="button" class="btn btn-outline-secondary">Manage Papper Bundle</button></a>&nbsp;
+                    <a href="#"><button type="button" class="btn btn-outline-secondary">Read QR code</button></a>&nbsp;
                     
 
 

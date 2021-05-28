@@ -34,15 +34,22 @@ Route::get('/al_paper_bundel', function () {
     
 });
 
-Route::get('/mannage_paper_bundle', function () {
-    return view('mannage_paper_bundle');
+Route::get('/set_place_to_marking', function () {
+    return view('set_place_to_marking');
     
 });
 
 Route::get('/genarate_qr_code', function () {
-    return view('genarate_qr_code');
+    $data=App\ol_paper_details::all();
+    return view('genarate_qr_code')->with('table_data',$data);
     
 });
 
-Route::post('/add_ol_paper_details', 'manage_paper_bundel_controller@store');
+Route::post('/add_ol_paper_details', 'manage_paper_details_controller@store_ol_details');
+
+Route::post('/add_al_paper_details', 'manage_paper_details_controller@store_al_details');
+
+Route::post('/set_marking_place', 'manage_paper_details_controller@store_set_marking_place_details');
+
+Route::get('/select_details', 'manage_paper_details_controller@select_details_from_table');
 

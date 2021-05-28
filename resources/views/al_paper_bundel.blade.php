@@ -20,7 +20,7 @@
 <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ url('/home') }}">
                     Department of Examination
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -94,13 +94,13 @@
                                  <div class="card-header text-left font-weight-bold">A/L Paper bundle Details</div>
                                     <div class="card-body">
                                        
-                                            <form action="" method="">
+                                            <form action="/add_al_paper_details" method="post">
                                             
                                             {{csrf_field()}}
 
                                             <div class="form-group row">
 
-                                                    <label for="bundle_number" class="col-md-4 col-form-label text-md-right">Bundel Number :</label>
+                                                    <label for="bundle_number" class="col-md-4 col-form-label text-md-right">Bundle Number :</label>
                                                     <div class="col-md-6">
                                                     <input type="number" name="bundle_number" class="form-control">
                                                     </div>
@@ -108,7 +108,7 @@
                                                     <br>
                                                     <br>
 
-                                                    <label for="paper_quntity" class="col-md-4 col-form-label text-md-right">Paper Quntity :</label>
+                                                    <label for="paper_quntity" class="col-md-4 col-form-label text-md-right">Paper Quantity :</label>
                                                     <div class="col-md-6">
                                                     <input type="number" name="paper_quntity" class="form-control">
                                                     </div>

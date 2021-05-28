@@ -20,7 +20,7 @@
 <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ url('/home') }}">
                     Department of Examination
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -94,7 +94,7 @@
                                  <div class="card-header text-left font-weight-bold">O/L Paper bundle Details</div>
                                     <div class="card-body">
                                        
-                                            <form action="add_ol_paper_details" method="post">
+                                            <form action="/add_ol_paper_details" method="post">
                                             
                                             {{csrf_field()}}
 
@@ -108,7 +108,7 @@
                                                     <br>
                                                     <br>
 
-                                                    <label for="paper_quntity" class="col-md-4 col-form-label text-md-right">Paper Quntity :</label>
+                                                    <label for="paper_quntity" class="col-md-4 col-form-label text-md-right">Paper Quantity :</label>
                                                     <div class="col-md-6">
                                                     <input type="number" name="paper_quntity" class="form-control">
                                                     </div>
