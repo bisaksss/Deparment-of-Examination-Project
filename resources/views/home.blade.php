@@ -31,8 +31,8 @@
                         </div>
                      </div>&nbsp;
                     <a href="/set_place_to_marking"><button type="button" class="btn btn-outline-secondary">Set places to Marking</button></a>&nbsp;
-                    <a href="/genarate_qr_code"> <button type="button" class="btn btn-outline-secondary">Manage Papper Bundle</button></a>&nbsp;
-                    <a href="#"><button type="button" class="btn btn-outline-secondary">Read QR code</button></a>&nbsp;
+                    <a href="/genarate_qr_code"> <button type="button" class="btn btn-outline-secondary">Mannage Papper Bundle</button></a>&nbsp;
+                    <a href="#"><button type="button" class="btn btn-outline-secondary">Read Barcode</button></a>&nbsp;
                     
 
 

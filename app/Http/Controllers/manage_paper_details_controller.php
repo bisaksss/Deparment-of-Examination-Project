@@ -90,4 +90,64 @@ class manage_paper_details_controller extends Controller
     }
 
 
+    public function mark_as_complete($id,$exam_type)
+    {   
+        if($exam_type=='ol')
+        {
+            $complete=ol_paper_details::find($id);
+            $complete->is_complete=1;
+            $complete->save();
+            return redirect()->back();
+        }
+        elseif($exam_type=='al')
+        {
+            $complete=al_paper_details::find($id);
+            $complete->is_complete=1;
+            $complete->save();
+            return redirect()->back();
+        }
+    }
+
+    public function mark_as_not_complete($id,$exam_type)
+    {
+        if($exam_type=='ol')
+        {
+            $complete=ol_paper_details::find($id);
+            $complete->is_complete=0;
+            $complete->save();
+            return redirect()->back();
+        }
+        elseif($exam_type=='al')
+        {
+            $complete=al_paper_details::find($id);
+            $complete->is_complete=0;
+            $complete->save();
+            return redirect()->back();
+        }
+    }
+
+
+
+
+    public function delete_paper_bundle_data($id,$exam_type)
+    {
+        if($exam_type=='ol')
+        {
+            $delete=ol_paper_details::find($id);
+            $delete->delete();
+            return redirect()->back();
+        }
+        elseif($exam_type=='al')
+        {
+            $delete=al_paper_details::find($id);
+            $delete->delete();
+            return redirect()->back();
+        }
+
+
+    }
+
+
+
+
 }
