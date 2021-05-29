@@ -53,3 +53,11 @@ Route::post('/set_marking_place', 'manage_paper_details_controller@store_set_mar
 
 Route::get('/select_details', 'manage_paper_details_controller@select_details_from_table');
 
+Route::get('/delete_data','manage_paper_details_controller@delete_data');
+
+Route::get('/mark_as_complete/{id}/{exam_type}','manage_paper_details_controller@mark_as_complete');
+
+Route::get('/mark_as_not_complete/{id}/{exam_type}','manage_paper_details_controller@mark_as_not_complete');
+
+Route::get('/delete_paper_bundle_data/{id}/{exam_type}','manage_paper_details_controller@delete_paper_bundle_data');
+

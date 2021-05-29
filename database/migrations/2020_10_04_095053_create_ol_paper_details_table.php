@@ -24,7 +24,7 @@ class CreateOlPaperDetailsTable extends Migration
 
             $table->boolean('is_complete')->default(0);
 
-
+            $table->string('exam_type')->default('ol');
 
             $table->timestamps();
         });

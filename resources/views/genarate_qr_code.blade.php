@@ -40,9 +40,9 @@
                             @endif-->
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                               
                                     {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
+                                    <a href="/home"><button type="button" class="btn btn-light">Back</button></a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
@@ -70,9 +70,15 @@
 
 
                 <div class="container">
-                                <form action="select_details" method="get">
+                          
+                         
+                    <div class="text-center">
+                        <h1>Genarate QR code & Marking Place Select</h1>
+
+                        <form action="select_details" method="get" class="form-group">
                                 {{csrf_field()}}
-                                    <div class="checkbox">
+                                
+                                        <div class="checkbox">
                                         <label><input type="checkbox" value="1" name="ol" class="" >O/L</label>
                                         </div>
                                         <div class="checkbox">
@@ -80,15 +86,11 @@
                                         </div>
                                 
                                 
-                                        <input style="width:200px" type="number" name="year" class="form-control" value="Year,Ex:2020/2019/2018">
+                                        <input style="width:200px" type="number" name="year">
+                                        <br>
                                         <br>
                                         <input type="submit" value="Submit" class="btn btn-primary">
                                 </form> 
-                         
-                    <div class="text-center">
-                        <h1>Genarate QR code & Marking Place Select</h1>
-
-                          
 
                             <div class="row">
                             
@@ -97,23 +99,55 @@
 
 
                                     <table class="table table-dark">
-
+                                    <thead>
+                                    <tr>
                                     <th>Bundle Number</th>
-                                    <th>Paper Quantity</th>
+                                    <th>Paper Quntity</th>
                                     <th>Year</th>
                                     <th>Writing Place</th>
                                     <th>Selected Medium</th>
                                     <th>Subject</th>
+                                    <th>Action</th>
+                                    <th>Genarate QR</th>
+                                    <th>Marking Place</th>
+                                    </tr>
+                                    </thead>
+                                    @foreach($table_data as $data)
+                                    <tbody>
+                                    <tr>
+                                    
+                                    <td>{{$data->bundle_number}}</td>
+                                    <td>{{$data->paper_quntity}}</td>
+                                    <td>{{$data->year}}</td>
+                                    <td>{{$data->writing_place}}</td>
+                                    <td>{{$data->medium}}</td>
+                                    <td>{{$data->subject}}</td>
 
                                   
-                                    @foreach($table_data as $task)
-                                    <tr>
-                                    <td>{{$task->bundle_number}}</td>
-                                    <td>{{$task->paper_quntity}}</td>
-                                    <td>{{$task->year}}</td>
-                                    <td>{{$task->writing_place}}</td>
-                                    <td>{{$task->medium}}</td>
-                                    <td>{{$task->subject}}</td>
+                                    <td>
+                                    @if($data->is_complete)
+                                    <a href="/mark_as_not_complete/{{$data->id}}/{{$data->exam_type}}"><button class="btn btn-secondary">Completed</button></a>
+                                    @else
+                                    <a href="/mark_as_complete/{{$data->id}}/{{$data->exam_type}}"><button class="btn btn-success">Mark As Complete</button></a>
+                                   
+                                    @endif
+                                    </td>
+                              
+                                    <td>
+                                    <button class="btn btn-warning">Genarate QR</button>
+                                    </td>
+                                    
+                                    <td>
+
+                                    <button type="button" class="btn btn-info">Marking Place</button>
+                                    </td>
+
+                                      <td>
+                                   
+                                    <a href="/delete_paper_bundle_data/{{$data->id}}/{{$data->exam_type}}"><button type="button" class="btn btn-danger">Delete</button></a>
+                                   
+                                    </td>            
+                                    </tbody>
                                     </tr>
                                     @endforeach
                                     </table>

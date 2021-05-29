@@ -38,9 +38,9 @@
                                 @endif-->
                             @else
                                 <li class="nav-item dropdown">
-                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                   
                                         {{ Auth::user()->name }} <span class="caret"></span>
-                                    </a>
+                                        <a href="/home"><button type="button" class="btn btn-light">Back</button></a>
 
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="{{ route('logout') }}"
@@ -137,7 +137,7 @@
                                                     <br>
                                                     <br>
                                                 
-                                                    <label for="paper_quntity" class="col-md-4 col-form-label text-md-right">Paper Quantity :</label>
+                                                    <label for="paper_quntity" class="col-md-4 col-form-label text-md-right">Paper Quntity :</label>
                                                     <div class="col-md-6">
                                                     <input type="number" name="paper_quntity" class="form-control">
                                                     </div>
