@@ -61,3 +61,17 @@ Route::get('/mark_as_not_complete/{id}/{exam_type}','manage_paper_details_contro
 
 Route::get('/delete_paper_bundle_data/{id}/{exam_type}','manage_paper_details_controller@delete_paper_bundle_data');
 
+//Route::get('/qr_code_page', function () {
+   // $genarate_qr=App\ol_paper_details::find($id);
+   // return view('qr_code_page')->with('qr_data',$genarate_qr);
+//});
+
+Route::get('/genarate_qr_code_page/{id}/{exam_type}','manage_paper_details_controller@genarate_qr_code_page');
+
+Route::get('/select_marking_place', function () {
+    return view('select_marking_place');
+    
+});
+Route::get('/show_marking_place_database','manage_paper_details_controller@show_marking_place_database');
+
+Route::get('/delete_marking_place/{id}','manage_paper_details_controller@delete_marking_place');

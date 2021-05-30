@@ -147,7 +147,37 @@ class manage_paper_details_controller extends Controller
 
     }
 
+    public function genarate_qr_code_page($id,$exam_type)
+    {
+
+        if($exam_type=='ol')
+        {
+            $genarate_qr=ol_paper_details::find($id);
+            return view('qr_code_page')->with('qr_data',$genarate_qr);
+        
+        }
+        elseif($exam_type=='al')
+        {
+            $genarate_qr=al_paper_details::find($id);
+           return view('Qr_code_page')->with('qr_data',$genarate_qr);
+        }
 
 
+    }
+
+
+    public function show_marking_place_database()
+    {
+        $data=marking_places::all();
+        return view('marking_places')->with('marking_place_data',$data);
+    }
+
+    public function delete_marking_place($id)
+    {
+        $delete=marking_places::find($id);
+        $delete->delete();
+        return redirect()->back();
+
+    }
 
 }

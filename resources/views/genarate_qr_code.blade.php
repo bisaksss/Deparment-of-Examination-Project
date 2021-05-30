@@ -134,12 +134,12 @@
                                     </td>
                               
                                     <td>
-                                    <button class="btn btn-warning">Genarate QR</button>
+                                    <a href="/genarate_qr_code_page/{{$data->id}}/{{$data->exam_type}}"><button class="btn btn-warning">Genarate QR</button></a>
                                     </td>
                                     
                                     <td>
 
-                                    <button type="button" class="btn btn-info">Marking Place</button>
+                                    <a href="/select_marking_place"><button type="button" class="btn btn-info">Marking Place</button></a>
                                     </td>
 
                                       <td>

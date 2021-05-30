@@ -160,6 +160,8 @@
                                             <button type="submit" class="btn btn-primary">Submit</button>
                                             &nbsp;
                                             <button type="reset" value="Reset" class="btn btn-warning">Clear</button>
+                                            &nbsp;
+                                            <a href="/show_marking_place_database"><button type="button" class="btn btn-secondary">Show Database</button></a>
 
                                             </form>
                                      </div>
