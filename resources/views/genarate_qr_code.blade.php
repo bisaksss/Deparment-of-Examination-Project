@@ -104,12 +104,13 @@
                                     <th>Bundle Number</th>
                                     <th>Paper Quntity</th>
                                     <th>Year</th>
+                                    <th>Distric</th>
                                     <th>Writing Place</th>
                                     <th>Selected Medium</th>
                                     <th>Subject</th>
                                     <th>Action</th>
                                     <th>Genarate QR</th>
-                                    <th>Marking Place</th>
+                                    <th>Select</th>
                                     </tr>
                                     </thead>
                                     @foreach($table_data as $data)
@@ -119,6 +120,7 @@
                                     <td>{{$data->bundle_number}}</td>
                                     <td>{{$data->paper_quntity}}</td>
                                     <td>{{$data->year}}</td>
+                                    <td>{{$data->distric}}</td>
                                     <td>{{$data->writing_place}}</td>
                                     <td>{{$data->medium}}</td>
                                     <td>{{$data->subject}}</td>
@@ -139,7 +141,7 @@
                                     
                                     <td>
 
-                                    <a href="/select_marking_place"><button type="button" class="btn btn-info">Marking Place</button></a>
+                                    <a href="/select_marking_place/{{$data->year}}/{{$data->paper_quntity}}/{{$data->distric}}/{{$data->medium}}/{{$data->subject}}/{{$data->exam_type}}"><button type="button" class="btn btn-info">Marking Place</button></a>
                                     </td>
 
                                       <td>

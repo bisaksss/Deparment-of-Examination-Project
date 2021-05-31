@@ -79,6 +79,9 @@
                                     <th>ID</th>
                                     <th>Distric</th>
                                     <th>Place</th>
+                                    <th>Medium</th>
+                                    <th>Subject</th>
+
                                     <th>Paper Quntity</th>
                                     <th>Year</th>
                                     </tr>
@@ -87,6 +90,8 @@
                                     <td> {{$data->id}}</td>
                                     <td> {{$data->distric}}</td>
                                     <td> {{$data->place}}</td>
+                                    <td> {{$data->medium}}</td>
+                                    <td> {{$data->subject}}</td>
                                     <td> {{$data->paper_quntity}}</td>
                                     <td> {{$data->year}}</td>
                                     <td>

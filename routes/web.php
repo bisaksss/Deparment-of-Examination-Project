@@ -68,10 +68,12 @@ Route::get('/delete_paper_bundle_data/{id}/{exam_type}','manage_paper_details_co
 
 Route::get('/genarate_qr_code_page/{id}/{exam_type}','manage_paper_details_controller@genarate_qr_code_page');
 
-Route::get('/select_marking_place', function () {
-    return view('select_marking_place');
+//Route::get('/select_marking_place', function () {
+    //return view('select_marking_place');
     
-});
+//});
 Route::get('/show_marking_place_database','manage_paper_details_controller@show_marking_place_database');
 
 Route::get('/delete_marking_place/{id}','manage_paper_details_controller@delete_marking_place');
+
+Route::get('/select_marking_place/{year}/{paper_quntity}/{distric}/{medium}/{subject}/{exam_type}','manage_paper_details_controller@select_marking_place');

@@ -79,7 +79,7 @@
 					<div class="text-center justify-content-center" >
 					@php
 				
-    				$var=QrCode::size(200)->generate("Bundle No = {$qr_data->bundle_number},Paper quntity = {$qr_data->paper_quntity},Year = {$qr_data->year},Writing place = {$qr_data->writing_place},Medium = {$qr_data->medium},Subject = {$qr_data->subject} ");
+    				$var=QrCode::size(200)->generate("Bundle No = {$qr_data->bundle_number},Paper quntity = {$qr_data->paper_quntity},Year = {$qr_data->year},Distric = {$qr_data->distric},Writing place = {$qr_data->writing_place},Medium = {$qr_data->medium},Subject = {$qr_data->subject} ");
 					echo $var;
 					@endphp
 					</div>

@@ -125,6 +125,42 @@
                                                     <br>
 
 
+                                                    <label for="distric" class="col-md-4 col-form-label text-md-right">Distric</label>
+                                                        <div class="col-md-6">
+                                                        <select class="form-control" id="distric" name="distric">
+                                                        <option>Ampara</option>
+                                                        <option>Anuradhapura</option>
+                                                        <option>Badulla</option>
+                                                        <option>Batticaloa</option>
+                                                        <option>Colombo</option>
+                                                        <option>Galle</option>
+                                                        <option>Gampaha</option>
+                                                        <option>Hambantota</option>
+                                                        <option>Jaffna</option>
+                                                        <option>Kalutara</option>
+                                                        <option>Kandy</option>
+                                                        <option>Kegalle</option>
+                                                        <option>Kilinochchi</option>
+                                                        <option>Kurunegala</option>
+                                                        <option>Mannar</option>
+                                                        <option>Matale</option>
+                                                        <option>Matara</option>
+                                                        <option>Monaragala</option>
+                                                        <option>Mullaitivu</option>
+                                                        <option>Nuwara Eliya</option>
+                                                        <option>Polonnaruwa</option>
+                                                        <option>Puttalam</option>
+                                                        <option>Ratnapura</option>
+                                                        <option>Trincomalee</option>
+                                                        <option>Vavuniya</option>
+                                                        
+                                                        </select>
+                                                        </div>
+
+                                                        <br>
+                                                        <br>
+
+
                                                     <label for="writing_place" class="col-md-4 col-form-label text-md-right">Writing Place :</label>
                                                     <div class="col-md-6">
                                                     <input type="text" name="writing_place" class="form-control">

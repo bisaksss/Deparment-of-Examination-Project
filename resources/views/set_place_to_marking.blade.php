@@ -92,7 +92,7 @@
                                                     </div>-->
 
                                               
-                                                        <label for="distric" class="col-md-4 col-form-label text-md-right">Example select</label>
+                                                        <label for="distric" class="col-md-4 col-form-label text-md-right">Distric</label>
                                                         <div class="col-md-6">
                                                         <select class="form-control" id="distric" name="distric">
                                                         <option>Ampara</option>
@@ -131,6 +131,27 @@
                                                     <label for="place" class="col-md-4 col-form-label text-md-right">Place :</label>
                                                     <div class="col-md-6">
                                                     <input type="text" name="place" class="form-control" value="">
+                                                    </div>
+                                                 
+
+                                                    <br>
+                                                    <br>
+
+                                                    <label for="medium" class="col-md-4 col-form-label text-md-right">Medium</label>
+                                                        <div class="col-md-6">
+                                                        <select class="form-control" id="medium" name="medium">
+                                                        <option>Sinhala</option>
+                                                        <option>Tamil</option>
+                                                        <option>English</option>
+                                                        </select>
+                                                        </div>
+
+                                                    <br>
+                                                    <br>
+
+                                                    <label for="subject" class="col-md-4 col-form-label text-md-right">Subject :</label>
+                                                    <div class="col-md-6">
+                                                    <input type="text" name="subject" class="form-control" value="">
                                                     </div>
                                                  
 

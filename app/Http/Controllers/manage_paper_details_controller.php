@@ -17,6 +17,7 @@ class manage_paper_details_controller extends Controller
        $ol_paper_details->bundle_number=$request->bundle_number;
        $ol_paper_details->paper_quntity=$request->paper_quntity;
        $ol_paper_details->year=$request->year;
+       $ol_paper_details->distric=$request->distric;
        $ol_paper_details->writing_place=$request->writing_place;
        $ol_paper_details->medium=$request->medium;
        $ol_paper_details->subject=$request->subject;
@@ -34,6 +35,7 @@ class manage_paper_details_controller extends Controller
         $al_paper_details->bundle_number=$request->bundle_number;
         $al_paper_details->paper_quntity=$request->paper_quntity;
         $al_paper_details->year=$request->year;
+        $al_paper_details->distric=$request->distric;
         $al_paper_details->writing_place=$request->writing_place;
         $al_paper_details->medium=$request->medium;
         $al_paper_details->subject=$request->subject;
@@ -47,6 +49,8 @@ class manage_paper_details_controller extends Controller
         $marking_places=new marking_places;
         $marking_places->distric=$request->distric;
         $marking_places->place=$request->place;
+        $marking_places->medium=$request->medium;
+        $marking_places->subject=$request->subject;
         $marking_places->paper_quntity=$request->paper_quntity;
         $marking_places->year=$request->year;
 
@@ -178,6 +182,12 @@ class manage_paper_details_controller extends Controller
         $delete->delete();
         return redirect()->back();
 
+    }
+
+
+    public function select_marking_place($year,$paper_quntity,$distric,$medium,$subject,$exam_type)
+    {
+            return view('select_marking_place');
     }
 
 }

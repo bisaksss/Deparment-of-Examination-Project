@@ -17,6 +17,8 @@ class CreateMarkingPlacesTable extends Migration
             $table->bigIncrements('id');
             $table->string('distric');
             $table->string('place');
+            $table->string('medium');
+            $table->string('subject');
             $table->string('paper_quntity');
             $table->integer('year');
 

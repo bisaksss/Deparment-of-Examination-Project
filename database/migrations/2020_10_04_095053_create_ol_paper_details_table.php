@@ -18,6 +18,7 @@ class CreateOlPaperDetailsTable extends Migration
             $table->integer('bundle_number');
             $table->integer('paper_quntity');
             $table->integer('year');
+            $table->string('distric');
             $table->string('writing_place');
             $table->string('medium');
             $table->string('subject');
