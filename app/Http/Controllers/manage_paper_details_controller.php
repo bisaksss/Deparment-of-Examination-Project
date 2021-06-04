@@ -187,7 +187,14 @@ class manage_paper_details_controller extends Controller
 
     public function select_marking_place($year,$paper_quntity,$distric,$medium,$subject,$exam_type)
     {
-            return view('select_marking_place');
+           
+        
+        
+        
+        
+        
+        
+        return view('select_marking_place');
     }
 
 }
