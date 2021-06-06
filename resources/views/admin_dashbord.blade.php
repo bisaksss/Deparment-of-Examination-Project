@@ -46,6 +46,11 @@
                     <a href="/genarate_qr_code"> <button type="button" class="btn btn-outline-secondary">Manage Paper Bundle</button></a>
                 </div>
 
+                <div class="container_btn_img">
+                    <img src="img/mannage_user.jpg" alt="Snow" style="width:100%">
+                    <a href="/genarate_qr_code"> <button type="button" class="btn btn-outline-secondary">Manage Users</button></a>
+                </div>
+
 
                 <div class="container_btn_img">
                     <img src="img/barcode_reader.jpg" alt="Snow" style="width:100%">

@@ -6,6 +6,7 @@
     <title>Genarate QR Code</title>
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     
@@ -13,6 +14,9 @@
 <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
+            <div class="logo_gov">
+            <img src="img/gov_logo.png">
+            </div>
                 <a class="navbar-brand" href="{{ url('/home') }}">
                     Department of Examination
                 </a>
@@ -69,13 +73,13 @@
 
 
 
-                <div class="container">
+                <div class="container space">
                           
                          
                     <div class="text-center">
-                        <h1>Genarate QR code & Marking Place Select</h1>
+                        <h1>Genarate QR code</h1>
 
-                        <form action="select_details" method="get" class="form-group">
+                        <form action="select_details" method="get" class="form-group form_dec">
                                 {{csrf_field()}}
                                 
                                         <div class="checkbox">
@@ -86,7 +90,7 @@
                                         </div>
                                 
                                 
-                                        <input style="width:200px" type="number" name="year">
+                                        <input style="width:200px" type="number" name="year" value="2020">
                                         <br>
                                         <br>
                                         <input type="submit" value="Submit" class="btn btn-primary">
@@ -110,7 +114,7 @@
                                     <th>Subject</th>
                                     <th>Action</th>
                                     <th>Genarate QR</th>
-                                    <th>Select</th>
+                                   <!-- <th>Select</th>-->
                                     </tr>
                                     </thead>
                                     @foreach($table_data as $data)
@@ -139,10 +143,15 @@
                                     <a href="/genarate_qr_code_page/{{$data->id}}/{{$data->exam_type}}"><button class="btn btn-warning">Genarate QR</button></a>
                                     </td>
                                     
-                                    <td>
+                                   <!-- <td>
 
                                     <a href="/select_marking_place/{{$data->year}}/{{$data->paper_quntity}}/{{$data->distric}}/{{$data->medium}}/{{$data->subject}}/{{$data->exam_type}}"><button type="button" class="btn btn-info">Marking Place</button></a>
-                                    </td>
+                                    </td>-->
+                                    <td>
+                                   
+                                   <a href="/edit_paper_bundle_data/{{$data->id}}/{{$data->exam_type}}"><button type="button" class="btn btn-light">Edit</button></a>
+                                  
+                                   </td>            
 
                                       <td>
                                    
@@ -163,7 +172,10 @@
                 </div>
 
 
-
+                <footer>
+    
+                <p class="copyright">© Department of Examination 2020</p>
+                </footer>
 
 </body>
 </html>

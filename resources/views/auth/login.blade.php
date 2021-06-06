@@ -1,17 +1,26 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container space">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+                <div class="card-header">{{ __('Login') }}
+                <a href="/admin"><button type="submit" class="btn btn-danger admin_login" >Admin Login</button></a>
+                </div>
+
 
                 <div class="card-body">
+               
+                
                     <form method="POST" action="{{ route('login') }}">
+                    <div class="imgcontainer">
+                    <img src="img/login_image.png" alt="Avatar" class="avatar">
+                    </div>
                         @csrf
 
                         <div class="form-group row">
+                        
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6">
@@ -56,12 +65,15 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Login') }}
                                 </button>
+                                &nbsp;
+                                &nbsp;
 
-                                @if (Route::has('password.request'))
+                                <a href="/register">Register</a>
+                               <!-- @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
                                         {{ __('Forgot Your Password?') }}
                                     </a>
-                                @endif
+                                @endif-->
                             </div>
                         </div>
                     </form>

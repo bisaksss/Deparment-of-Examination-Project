@@ -15,11 +15,15 @@
     <title>O/L paper bundle</title>
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
+            <div class="logo_gov">
+            <img src="img/gov_logo.png">
+            </div>
                 <a class="navbar-brand" href="{{ url('/home') }}">
                     Department of Examination
                 </a>
@@ -80,13 +84,15 @@
 
 
 
-    <div class="container">
+    <div class="container space">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="text-center">
 
 
                          <h1 class="font-weight-normal">  G.C.E(A/L) </h1>
+                         <h3 class="font-weight-normal text-danger"> First Add Level 2 Districts </h3>
+                         <h5 class="font-weight-normal text-secondary"> Colombo/Gampaha/Kandy/Matara/<br>Galle/Kurunagala/Rathnapura </h5>
 
                             <br>
                             <br>
@@ -108,7 +114,7 @@
                                                     <br>
                                                     <br>
 
-                                                    <label for="paper_quntity" class="col-md-4 col-form-label text-md-right">Paper Quntity :</label>
+                                                    <label for="paper_quntity" class="col-md-4 col-form-label text-md-right">Paper Quantity :</label>
                                                     <div class="col-md-6">
                                                     <input type="number" name="paper_quntity" class="form-control">
                                                     </div>
@@ -125,7 +131,7 @@
                                                     <br>
 
 
-                                                    <label for="distric" class="col-md-4 col-form-label text-md-right">Distric</label>
+                                                    <label for="distric" class="col-md-4 col-form-label text-md-right">District</label>
                                                         <div class="col-md-6">
                                                         <select class="form-control" id="distric" name="distric">
                                                         <option>Ampara</option>
@@ -176,7 +182,7 @@
                                                     <select class="form-control" id="medium" name="medium">
                                                     <option>Sinhala</option>
                                                     <option>Tamil</option>
-                                                    <option>Sinhala</option>
+                                                    <option>English</option>
                                                     
                                                     </select>
                                                     </div>
@@ -210,5 +216,9 @@
             </div>
         </div>
     </div>
+    <footer>
+    
+    <p class="copyright">© Department of Examination 2020</p>
+    </footer>
 </body>
 </html>

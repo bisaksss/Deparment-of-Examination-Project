@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\ol_paper_details;
 use App\al_paper_details;
-use App\marking_places;
+use App\marking_places_ol;
+use App\marking_places_al;
 
 class manage_paper_details_controller extends Controller
 {
@@ -43,10 +44,10 @@ class manage_paper_details_controller extends Controller
         return view('al_paper_bundel'); 
     }
 
-    public function store_set_marking_place_details(request $request)
+    public function store_set_marking_place_details_ol(request $request)
     {
         
-        $marking_places=new marking_places;
+        $marking_places=new marking_places_ol;
         $marking_places->distric=$request->distric;
         $marking_places->place=$request->place;
         $marking_places->medium=$request->medium;
@@ -56,7 +57,24 @@ class manage_paper_details_controller extends Controller
 
         $marking_places->save();
 
-        return view('set_place_to_marking');
+        return view('set_place_to_marking_ol');
+
+
+    }
+    public function store_set_marking_place_details_al(request $request)
+    {
+        
+        $marking_places=new marking_places_al;
+        $marking_places->distric=$request->distric;
+        $marking_places->place=$request->place;
+        $marking_places->medium=$request->medium;
+        $marking_places->subject=$request->subject;
+        $marking_places->paper_quntity=$request->paper_quntity;
+        $marking_places->year=$request->year;
+
+        $marking_places->save();
+
+        return view('set_place_to_marking_al');
 
 
     }
@@ -170,31 +188,1364 @@ class manage_paper_details_controller extends Controller
     }
 
 
-    public function show_marking_place_database()
+    public function show_marking_place_database_ol()
     {
-        $data=marking_places::all();
-        return view('marking_places')->with('marking_place_data',$data);
+        $data=marking_places_ol::all();
+        return view('marking_places_ol')->with('marking_place_data',$data);
     }
 
-    public function delete_marking_place($id)
+    public function show_marking_place_database_al()
     {
-        $delete=marking_places::find($id);
+        $data=marking_places_al::all();
+        return view('marking_places_al')->with('marking_place_data',$data);
+    }
+
+    public function delete_marking_place_ol($id)
+    {
+        $delete=marking_places_ol::find($id);
+        $delete->delete();
+        return redirect()->back();
+
+    }
+
+    public function delete_marking_place_al($id)
+    {
+        $delete=marking_places_al::find($id);
         $delete->delete();
         return redirect()->back();
 
     }
 
 
+
     public function select_marking_place($year,$paper_quntity,$distric,$medium,$subject,$exam_type)
     {
-           
+        
+        
+       if($exam_type=='ol')
+        {
+             
+        switch($distric)
+        {   
+
+            
+            case "Ampara":
+          
+            $data=marking_places_ol::where('distric','=','Anuradhapura')
+           ->orwhere('distric','=','Jaffna')
+           ->orwhere('distric','=','Kalutara')
+           ->orwhere('distric','=','Kegalle')
+           ->orwhere('distric','=','Kilinochchi')
+           ->orwhere('distric','=','Mannar')
+           ->orwhere('distric','=','Mullaitivu')
+           ->orwhere('distric','=','Nuwara Eliya')
+           ->orwhere('distric','=','Puttalam')
+           ->orwhere('distric','=','Trincomalee')
+           ->orwhere('distric','=','Vavuniya')
+           ->get();
+
+
+          return view('select_marking_place_ol')
+          ->with('row_data',$data)
+          ->with('year',$year)
+          ->with('medium',$medium)
+          ->with('subject',$subject)
+          ->with('ppr_quntity',$paper_quntity);
+
+            break;   
+
+            case "Anuradhapura":
+
+
+                $data=marking_places_ol::where('distric','=','Badulla')
+                ->orwhere('distric','=','Baticaloa')
+                ->orwhere('distric','=','Hambanthota')
+                ->orwhere('distric','=','Jaffna')
+                ->orwhere('distric','=','Kalutara')
+                ->orwhere('distric','=','Kegalle')
+                ->orwhere('distric','=','Kilinochchi')
+                ->orwhere('distric','=','Monaragala')
+                ->orwhere('distric','=','Mullaitivu')
+                ->orwhere('distric','=','Nuwara Eliya')
+                ->orwhere('distric','=','Puttalam')
+                ->get();
+     
+     
+               return view('select_marking_place_ol')
+               ->with('row_data',$data)
+               ->with('year',$year)
+               ->with('medium',$medium)
+               ->with('subject',$subject)
+               ->with('ppr_quntity',$paper_quntity);
+             
+            break;   
+             
+            case "Badulla":
+
+
+                $data=marking_places_ol::where('distric','=','Anuradapura')
+                ->orwhere('distric','=','Baticaloa')
+                ->orwhere('distric','=','Hambanthota')
+                ->orwhere('distric','=','Jaffna')
+                ->orwhere('distric','=','Kalutara')
+                ->orwhere('distric','=','Kegalle')
+                ->orwhere('distric','=','Kilinochchi')
+                ->orwhere('distric','=','Mannar')
+                ->orwhere('distric','=','Mullaitivu')
+                ->orwhere('distric','=','Polonnaruwa')
+                ->orwhere('distric','=','Puttalam')
+                ->orwhere('distric','=','Trincomalee')
+                ->orwhere('distric','=','Vavuniya')
+                ->get();
+     
+     
+               return view('select_marking_place_ol')
+               ->with('row_data',$data)
+               ->with('year',$year)
+               ->with('medium',$medium)
+               ->with('subject',$subject)
+               ->with('ppr_quntity',$paper_quntity);
+             
+            break;   
+                         
+            case "Batticaloa":
+
+                $data=marking_places_ol::where('distric','=','Anuradapura')
+                ->orwhere('distric','=','Badulla')
+                ->orwhere('distric','=','Hambanthota')
+                ->orwhere('distric','=','Jaffna')
+                ->orwhere('distric','=','Kalutara')
+                ->orwhere('distric','=','Kegalle')
+                ->orwhere('distric','=','Kilinochchi')
+                ->orwhere('distric','=','Mannar')
+                ->orwhere('distric','=','Matale')
+                ->orwhere('distric','=','Monaragala')
+                ->orwhere('distric','=','Mullaitivu')
+                ->orwhere('distric','=','Nuwara Eliya')
+                ->orwhere('distric','=','Puttalam')
+                ->orwhere('distric','=','Vavuniya')
+                ->get();
+     
+     
+               return view('select_marking_place_ol')
+               ->with('row_data',$data)
+               ->with('year',$year)
+               ->with('medium',$medium)
+               ->with('subject',$subject)
+               ->with('ppr_quntity',$paper_quntity);
+             
+            break;   
+             
+            case "Colombo":
+
+                $data=marking_places_ol::where('distric','=','Kandy')
+                ->orwhere('distric','=','Matara')
+                ->orwhere('distric','=','Galle')
+                ->orwhere('distric','=','Kurunegala')
+                ->orwhere('distric','=','Ratnapura')
+                ->get();
+     
+     
+               return view('select_marking_place_ol')
+               ->with('row_data',$data)
+               ->with('year',$year)
+               ->with('medium',$medium)
+               ->with('subject',$subject)
+               ->with('ppr_quntity',$paper_quntity);
+             
+            break;   
+            case "Galle":
+
+                $data=marking_places_ol::where('distric','=','Colombo')
+                ->orwhere('distric','=','Kandy')
+                ->orwhere('distric','=','Kurunegala')
+                ->orwhere('distric','=','Gampaha')
+                ->get();
+     
+     
+               return view('select_marking_place_ol')
+               ->with('row_data',$data)
+               ->with('year',$year)
+               ->with('medium',$medium)
+               ->with('subject',$subject)
+               ->with('ppr_quntity',$paper_quntity);
+             
+            break;   
+            case "Gampaha":
+
+                $data=marking_places_ol::where('distric','=','Kandy')
+                ->orwhere('distric','=','Matara')
+                ->orwhere('distric','=','Galle')
+                ->orwhere('distric','=','Ratnapura')
+                ->get();
+     
+     
+               return view('select_marking_place_ol')
+               ->with('row_data',$data)
+               ->with('year',$year)
+               ->with('medium',$medium)
+               ->with('subject',$subject)
+               ->with('ppr_quntity',$paper_quntity);
+             
+            break;   
+            case "Hambantota":
+
+                $data=marking_places_ol::where('distric','=','Anuradapura')
+                ->orwhere('distric','=','Badulla')
+                ->orwhere('distric','=','Baticaloa')
+                ->orwhere('distric','=','Jaffna')
+                ->orwhere('distric','=','Kalutara')
+                ->orwhere('distric','=','Kegalle')
+                ->orwhere('distric','=','Kilinochchi')
+                ->orwhere('distric','=','Mannar')
+                ->orwhere('distric','=','Matale')
+                ->orwhere('distric','=','Polonnaruwa')
+                ->orwhere('distric','=','Mullaitivu')
+                ->orwhere('distric','=','Nuwara Eliya')
+                ->orwhere('distric','=','Puttalam')
+                ->orwhere('distric','=','Trincomalee')
+                ->orwhere('distric','=','Vavuniya')
+                ->get();
+     
+     
+               return view('select_marking_place_ol')
+               ->with('row_data',$data)
+               ->with('year',$year)
+               ->with('medium',$medium)
+               ->with('subject',$subject)
+               ->with('ppr_quntity',$paper_quntity);
+             
+            break;   
+            case "Jaffna":
+
+                $data=marking_places_ol::where('distric','=','Anuradapura')
+                ->orwhere('distric','=','Badulla')
+                ->orwhere('distric','=','Baticaloa')
+                ->orwhere('distric','=','Amapara')
+                ->orwhere('distric','=','Kalutara')
+                ->orwhere('distric','=','Kegalle')
+                ->orwhere('distric','=','Hambanthota')
+                ->orwhere('distric','=','Mannar')
+                ->orwhere('distric','=','Matale')
+                ->orwhere('distric','=','Polonnaruwa')
+                ->orwhere('distric','=','Monaragala')
+                ->orwhere('distric','=','Nuwara Eliya')
+                ->orwhere('distric','=','Puttalam')
+                ->orwhere('distric','=','Trincomalee')
+                ->orwhere('distric','=','Vavuniya')
+                ->get();
+     
+     
+               return view('select_marking_place_ol')
+               ->with('row_data',$data)
+               ->with('year',$year)
+               ->with('medium',$medium)
+               ->with('subject',$subject)
+               ->with('ppr_quntity',$paper_quntity);
+             
+            break;   
+            case "Kalutara":
+
+
+                $data=marking_places_ol::where('distric','=','Anuradapura')
+                ->orwhere('distric','=','Badulla')
+                ->orwhere('distric','=','Baticaloa')
+                ->orwhere('distric','=','Amapara')
+                ->orwhere('distric','=','Jaffna')
+                ->orwhere('distric','=','Kegalle')
+                ->orwhere('distric','=','Hambanthota')
+                ->orwhere('distric','=','Mannar')
+                ->orwhere('distric','=','Matale')
+                ->orwhere('distric','=','Polonnaruwa')
+                ->orwhere('distric','=','Monaragala')
+                ->orwhere('distric','=','Nuwara Eliya')
+                ->orwhere('distric','=','Puttalam')
+                ->orwhere('distric','=','Trincomalee')
+                ->orwhere('distric','=','Vavuniya')
+                ->orwhere('distric','=','Kilinochchi')
+                ->orwhere('distric','=','Mullaitivu')
+                ->get();
+     
+     
+               return view('select_marking_place_ol')
+               ->with('row_data',$data)
+               ->with('year',$year)
+               ->with('medium',$medium)
+               ->with('subject',$subject)
+               ->with('ppr_quntity',$paper_quntity);
+             
+            break;   
+            case "Kandy":
+
+                $data=marking_places_ol::where('distric','=','Colombo')
+                ->orwhere('distric','=','Matara')
+                ->orwhere('distric','=','Galle')
+                ->orwhere('distric','=','Gampaha')
+                ->orwhere('distric','=','Ratnapura')
+                ->get();
+     
+     
+               return view('select_marking_place_ol')
+               ->with('row_data',$data)
+               ->with('year',$year)
+               ->with('medium',$medium)
+               ->with('subject',$subject)
+               ->with('ppr_quntity',$paper_quntity);
+             
+            break;   
+            case "Kegalle":
+
+                $data=marking_places_ol::where('distric','=','Anuradapura')
+                ->orwhere('distric','=','Badulla')
+                ->orwhere('distric','=','Baticaloa')
+                ->orwhere('distric','=','Amapara')
+                ->orwhere('distric','=','Jaffna')
+                ->orwhere('distric','=','Kalutara')
+                ->orwhere('distric','=','Hambanthota')
+                ->orwhere('distric','=','Mannar')
+                ->orwhere('distric','=','Matale')
+                ->orwhere('distric','=','Polonnaruwa')
+                ->orwhere('distric','=','Monaragala')
+                ->orwhere('distric','=','Puttalam')
+                ->orwhere('distric','=','Trincomalee')
+                ->orwhere('distric','=','Vavuniya')
+                ->orwhere('distric','=','Kilinochchi')
+                ->orwhere('distric','=','Mullaitivu')
+                ->get();
+     
+     
+               return view('select_marking_place_ol')
+               ->with('row_data',$data)
+               ->with('year',$year)
+               ->with('medium',$medium)
+               ->with('subject',$subject)
+               ->with('ppr_quntity',$paper_quntity);
+             
+            break;   
+            case "Kilinochchi":
+
+                $data=marking_places_ol::where('distric','=','Anuradapura')
+                ->orwhere('distric','=','Badulla')
+                ->orwhere('distric','=','Baticaloa')
+                ->orwhere('distric','=','Amapara')
+                ->orwhere('distric','=','Jaffna')
+                ->orwhere('distric','=','Kalutara')
+                ->orwhere('distric','=','Hambanthota')
+                ->orwhere('distric','=','Kegalle')
+                ->orwhere('distric','=','Matale')
+                ->orwhere('distric','=','Polonnaruwa')
+                ->orwhere('distric','=','Monaragala')
+                ->orwhere('distric','=','Puttalam')
+                ->orwhere('distric','=','Trincomalee')
+                ->orwhere('distric','=','Vavuniya')
+                ->get();
+     
+     
+               return view('select_marking_place_ol')
+               ->with('row_data',$data)
+               ->with('year',$year)
+               ->with('medium',$medium)
+               ->with('subject',$subject)
+               ->with('ppr_quntity',$paper_quntity);
+             
+            break; 
+            case "Kurunegala":
+
+                $data=marking_places_ol::where('distric','=','Colombo')
+                ->orwhere('distric','=','Matara')
+                ->orwhere('distric','=','Galle')
+                ->orwhere('distric','=','Ratnapura')
+                ->get();
+     
+     
+               return view('select_marking_place_ol')
+               ->with('row_data',$data)
+               ->with('year',$year)
+               ->with('medium',$medium)
+               ->with('subject',$subject)
+               ->with('ppr_quntity',$paper_quntity);
+             
+            break;  
+            case "Mannar":
+
+                $data=marking_places_ol::where('distric','=','Nuwara Eliya')
+                ->orwhere('distric','=','Badulla')
+                ->orwhere('distric','=','Baticaloa')
+                ->orwhere('distric','=','Amapara')
+                ->orwhere('distric','=','Jaffna')
+                ->orwhere('distric','=','Kalutara')
+                ->orwhere('distric','=','Hambanthota')
+                ->orwhere('distric','=','Kegalle')
+                ->orwhere('distric','=','Matale')
+                ->orwhere('distric','=','Polonnaruwa')
+                ->orwhere('distric','=','Monaragala')
+                ->orwhere('distric','=','Trincomalee')
+                ->get();
+     
+     
+               return view('select_marking_place_ol')
+               ->with('row_data',$data)
+               ->with('year',$year)
+               ->with('medium',$medium)
+               ->with('subject',$subject)
+               ->with('ppr_quntity',$paper_quntity);
+             
+            break;  
+            case "Matale":
+
+                $data=marking_places_ol::where('distric','=','Baticaloa') 
+                ->orwhere('distric','=','Hambanthota')
+                ->orwhere('distric','=','Jaffna')
+                ->orwhere('distric','=','Kalutara')
+                ->orwhere('distric','=','Kegalle')
+                ->orwhere('distric','=','Kilinochchi')
+                ->orwhere('distric','=','Mannar')
+                ->orwhere('distric','=','Monaragala')
+                ->orwhere('distric','=','Mullaitivu')
+                ->orwhere('distric','=','Nuwara Eliya')
+                ->orwhere('distric','=','Puttalam')
+                ->orwhere('distric','=','Trincomalee')
+                ->orwhere('distric','=','Vavuniya')
+                ->get();
+     
+     
+               return view('select_marking_place_ol')
+               ->with('row_data',$data)
+               ->with('year',$year)
+               ->with('medium',$medium)
+               ->with('subject',$subject)
+               ->with('ppr_quntity',$paper_quntity);
+             
+            break;  
+            case "Matara":
+
+                $data=marking_places_ol::where('distric','=','Colombo')
+                ->orwhere('distric','=','Kandy')
+                ->orwhere('distric','=','Kurunegala')
+                ->orwhere('distric','=','Gampaha')
+                ->get();
+     
+     
+               return view('select_marking_place_ol')
+               ->with('row_data',$data)
+               ->with('year',$year)
+               ->with('medium',$medium)
+               ->with('subject',$subject)
+               ->with('ppr_quntity',$paper_quntity);
+             
+            break;  
+            case "Monaragala":
+
+                $data=marking_places_ol::where('distric','=','Anuradapura') 
+                ->orwhere('distric','=','Baticaloa')
+                ->orwhere('distric','=','Jaffna')
+                ->orwhere('distric','=','Kalutara')
+                ->orwhere('distric','=','Kegalle')
+                ->orwhere('distric','=','Kilinochchi')
+                ->orwhere('distric','=','Mannar')
+                ->orwhere('distric','=','Matale')
+                ->orwhere('distric','=','Mullaitivu')
+                ->orwhere('distric','=','Nuwara Eliya')
+                ->orwhere('distric','=','Puttalam')
+                ->orwhere('distric','=','Trincomalee')
+                ->orwhere('distric','=','Vavuniya')
+                ->orwhere('distric','=','Polonnaruwa')
+                ->get();
+     
+     
+               return view('select_marking_place_ol')
+               ->with('row_data',$data)
+               ->with('year',$year)
+               ->with('medium',$medium)
+               ->with('subject',$subject)
+               ->with('ppr_quntity',$paper_quntity);
+             
+            break;  
+            case "Mullaitivu":
+
+                $data=marking_places_ol::where('distric','=','Amapara') 
+                ->orwhere('distric','=','Anuradapura')
+                ->orwhere('distric','=','Badulla')
+                ->orwhere('distric','=','Baticaloa')
+                ->orwhere('distric','=','Hambanthota')
+                ->orwhere('distric','=','Kalutara')
+                ->orwhere('distric','=','Kegalle')
+                ->orwhere('distric','=','Matale')
+                ->orwhere('distric','=','Monaragala')
+                ->orwhere('distric','=','Nuwara Eliya')
+                ->orwhere('distric','=','Puttalam')
+                ->orwhere('distric','=','Polonnaruwa')
+                ->get();
+     
+     
+               return view('select_marking_place_ol')
+               ->with('row_data',$data)
+               ->with('year',$year)
+               ->with('medium',$medium)
+               ->with('subject',$subject)
+               ->with('ppr_quntity',$paper_quntity);
+             
+            break;  
+            case "Nuwara Eliya":
+
+                $data=marking_places_ol::where('distric','=','Amapara') 
+                ->orwhere('distric','=','Anuradapura')
+                ->orwhere('distric','=','Baticaloa')
+                ->orwhere('distric','=','Jaffna')
+                ->orwhere('distric','=','Hambanthota')
+                ->orwhere('distric','=','Kalutara')
+                ->orwhere('distric','=','Kilinochchi')
+                ->orwhere('distric','=','Matale')
+                ->orwhere('distric','=','Monaragala')
+                ->orwhere('distric','=','Mannar')
+                ->orwhere('distric','=','Puttalam')
+                ->orwhere('distric','=','Polonnaruwa')
+                ->orwhere('distric','=','Mullaitivu')
+                ->orwhere('distric','=','Trincomalee')
+                ->orwhere('distric','=','Vavuniya')
+                ->get();
+     
+     
+               return view('select_marking_place_ol')
+               ->with('row_data',$data)
+               ->with('year',$year)
+               ->with('medium',$medium)
+               ->with('subject',$subject)
+               ->with('ppr_quntity',$paper_quntity);
+             
+            break; 
+            
+            case "Polonnaruwa":
+
+                $data=marking_places_ol::where('distric','=','Badulla') 
+                ->orwhere('distric','=','Hambanthota')
+                ->orwhere('distric','=','Jaffna')
+                ->orwhere('distric','=','Kalutara')
+                ->orwhere('distric','=','Kegalle')
+                ->orwhere('distric','=','Kilinochchi')
+                ->orwhere('distric','=','Mannar')
+                ->orwhere('distric','=','Monaragala')
+                ->orwhere('distric','=','Mullaitivu')
+                ->orwhere('distric','=','Nuwara Eliya')
+                ->orwhere('distric','=','Puttalam')
+                ->orwhere('distric','=','Vavuniya')
+                ->get();
+     
+     
+               return view('select_marking_place_ol')
+               ->with('row_data',$data)
+               ->with('year',$year)
+               ->with('medium',$medium)
+               ->with('subject',$subject)
+               ->with('ppr_quntity',$paper_quntity);
+             
+            break;   
+            case "Puttalam":
+
+                $data=marking_places_ol::where('distric','=','Badulla') 
+                ->orwhere('distric','=','Amapara')
+                ->orwhere('distric','=','Baticaloa')
+                ->orwhere('distric','=','Hambanthota')
+                ->orwhere('distric','=','Jaffna')
+                ->orwhere('distric','=','Kalutara')
+                ->orwhere('distric','=','Kegalle')
+                ->orwhere('distric','=','Kilinochchi')
+                ->orwhere('distric','=','Matale')
+                ->orwhere('distric','=','Monaragala')
+                ->orwhere('distric','=','Mullaitivu')
+                ->orwhere('distric','=','Nuwara Eliya')
+                ->orwhere('distric','=','Polonnaruwa')
+                ->orwhere('distric','=','Trincomalee')
+                ->orwhere('distric','=','Vavuniya')
+                ->get();
+     
+     
+               return view('select_marking_place_ol')
+               ->with('row_data',$data)
+               ->with('year',$year)
+               ->with('medium',$medium)
+               ->with('subject',$subject)
+               ->with('ppr_quntity',$paper_quntity);
+             
+            break;   
+            case "Ratnapura":
+
+                $data=marking_places_ol::where('distric','=','Gampaha')
+                ->orwhere('distric','=','Kandy')
+                ->orwhere('distric','=','Kurunegala')
+                ->get();
+     
+     
+               return view('select_marking_place_ol')
+               ->with('row_data',$data)
+               ->with('year',$year)
+               ->with('medium',$medium)
+               ->with('subject',$subject)
+               ->with('ppr_quntity',$paper_quntity);
+             
+            break;   
+            case "Trincomalee":
+
+            
+                $data=marking_places_ol::where('distric','=','Badulla') 
+                ->orwhere('distric','=','Amapara')
+                ->orwhere('distric','=','Hambanthota')
+                ->orwhere('distric','=','Jaffna')
+                ->orwhere('distric','=','Kalutara')
+                ->orwhere('distric','=','Kegalle')
+                ->orwhere('distric','=','Kilinochchi')
+                ->orwhere('distric','=','Mannar')
+                ->orwhere('distric','=','Matale')
+                ->orwhere('distric','=','Monaragala')
+                ->orwhere('distric','=','Nuwara Eliya')
+                ->orwhere('distric','=','Puttalam')
+                ->get();
+     
+     
+               return view('select_marking_place_ol')
+               ->with('row_data',$data)
+               ->with('year',$year)
+               ->with('medium',$medium)
+               ->with('subject',$subject)
+               ->with('ppr_quntity',$paper_quntity);
+             
+            
+            break;   
+            case "Vavuniya":
+
+                $data=marking_places_ol::where('distric','=','Badulla') 
+                ->orwhere('distric','=','Amapara')
+                ->orwhere('distric','=','Hambanthota')
+                ->orwhere('distric','=','Jaffna')
+                ->orwhere('distric','=','Kalutara')
+                ->orwhere('distric','=','Kegalle')
+                ->orwhere('distric','=','Kilinochchi')
+                ->orwhere('distric','=','Baticaloa')
+                ->orwhere('distric','=','Matale')
+                ->orwhere('distric','=','Monaragala')
+                ->orwhere('distric','=','Nuwara Eliya')
+                ->orwhere('distric','=','Puttalam')
+                ->orwhere('distric','=','Polonnaruwa')
+                ->get();
+     
+     
+               return view('select_marking_place_ol')
+               ->with('row_data',$data)
+               ->with('year',$year)
+               ->with('medium',$medium)
+               ->with('subject',$subject)
+               ->with('ppr_quntity',$paper_quntity);
+             
+            break;   
+                                                                                                                                                                                                                                          
+
+
+        } 
+        }
+
+
+
+        if($exam_type=='al')
+        {
+             
+            switch($distric)
+            {   
+    
+                
+                case "Ampara":
+              
+                $data=marking_places_al::where('distric','=','Anuradhapura')
+               ->orwhere('distric','=','Jaffna')
+               ->orwhere('distric','=','Kalutara')
+               ->orwhere('distric','=','Kegalle')
+               ->orwhere('distric','=','Kilinochchi')
+               ->orwhere('distric','=','Mannar')
+               ->orwhere('distric','=','Mullaitivu')
+               ->orwhere('distric','=','Nuwara Eliya')
+               ->orwhere('distric','=','Puttalam')
+               ->orwhere('distric','=','Trincomalee')
+               ->orwhere('distric','=','Vavuniya')
+               ->get();
+    
+    
+              return view('select_marking_place_al')
+              ->with('row_data',$data)
+              ->with('year',$year)
+              ->with('medium',$medium)
+              ->with('subject',$subject)
+              ->with('ppr_quntity',$paper_quntity);
+    
+                break;   
+    
+                case "Anuradhapura":
+    
+    
+                    $data=marking_places_al::where('distric','=','Badulla')
+                    ->orwhere('distric','=','Baticaloa')
+                    ->orwhere('distric','=','Hambanthota')
+                    ->orwhere('distric','=','Jaffna')
+                    ->orwhere('distric','=','Kalutara')
+                    ->orwhere('distric','=','Kegalle')
+                    ->orwhere('distric','=','Kilinochchi')
+                    ->orwhere('distric','=','Monaragala')
+                    ->orwhere('distric','=','Mullaitivu')
+                    ->orwhere('distric','=','Nuwara Eliya')
+                    ->orwhere('distric','=','Puttalam')
+                    ->get();
+         
+         
+                   return view('select_marking_place_al')
+                   ->with('row_data',$data)
+                   ->with('year',$year)
+                   ->with('medium',$medium)
+                   ->with('subject',$subject)
+                   ->with('ppr_quntity',$paper_quntity);
+                 
+                break;   
+                 
+                case "Badulla":
+    
+    
+                    $data=marking_places_al::where('distric','=','Anuradapura')
+                    ->orwhere('distric','=','Baticaloa')
+                    ->orwhere('distric','=','Hambanthota')
+                    ->orwhere('distric','=','Jaffna')
+                    ->orwhere('distric','=','Kalutara')
+                    ->orwhere('distric','=','Kegalle')
+                    ->orwhere('distric','=','Kilinochchi')
+                    ->orwhere('distric','=','Mannar')
+                    ->orwhere('distric','=','Mullaitivu')
+                    ->orwhere('distric','=','Polonnaruwa')
+                    ->orwhere('distric','=','Puttalam')
+                    ->orwhere('distric','=','Trincomalee')
+                    ->orwhere('distric','=','Vavuniya')
+                    ->get();
+         
+         
+                   return view('select_marking_place_al')
+                   ->with('row_data',$data)
+                   ->with('year',$year)
+                   ->with('medium',$medium)
+                   ->with('subject',$subject)
+                   ->with('ppr_quntity',$paper_quntity);
+                 
+                break;   
+                             
+                case "Batticaloa":
+    
+                    $data=marking_places_al::where('distric','=','Anuradapura')
+                    ->orwhere('distric','=','Badulla')
+                    ->orwhere('distric','=','Hambanthota')
+                    ->orwhere('distric','=','Jaffna')
+                    ->orwhere('distric','=','Kalutara')
+                    ->orwhere('distric','=','Kegalle')
+                    ->orwhere('distric','=','Kilinochchi')
+                    ->orwhere('distric','=','Mannar')
+                    ->orwhere('distric','=','Matale')
+                    ->orwhere('distric','=','Monaragala')
+                    ->orwhere('distric','=','Mullaitivu')
+                    ->orwhere('distric','=','Nuwara Eliya')
+                    ->orwhere('distric','=','Puttalam')
+                    ->orwhere('distric','=','Vavuniya')
+                    ->get();
+         
+         
+                   return view('select_marking_place_al')
+                   ->with('row_data',$data)
+                   ->with('year',$year)
+                   ->with('medium',$medium)
+                   ->with('subject',$subject)
+                   ->with('ppr_quntity',$paper_quntity);
+                 
+                break;   
+                 
+                case "Colombo":
+    
+                    $data=marking_places_al::where('distric','=','Kandy')
+                    ->orwhere('distric','=','Matara')
+                    ->orwhere('distric','=','Galle')
+                    ->orwhere('distric','=','Kurunegala')
+                    ->orwhere('distric','=','Ratnapura')
+                    ->get();
+         
+         
+                   return view('select_marking_place_al')
+                   ->with('row_data',$data)
+                   ->with('year',$year)
+                   ->with('medium',$medium)
+                   ->with('subject',$subject)
+                   ->with('ppr_quntity',$paper_quntity);
+                 
+                break;   
+                case "Galle":
+    
+                    $data=marking_places_al::where('distric','=','Colombo')
+                    ->orwhere('distric','=','Kandy')
+                    ->orwhere('distric','=','Kurunegala')
+                    ->orwhere('distric','=','Gampaha')
+                    ->get();
+         
+         
+                   return view('select_marking_place_al')
+                   ->with('row_data',$data)
+                   ->with('year',$year)
+                   ->with('medium',$medium)
+                   ->with('subject',$subject)
+                   ->with('ppr_quntity',$paper_quntity);
+                 
+                break;   
+                case "Gampaha":
+    
+                    $data=marking_places_al::where('distric','=','Kandy')
+                    ->orwhere('distric','=','Matara')
+                    ->orwhere('distric','=','Galle')
+                    ->orwhere('distric','=','Ratnapura')
+                    ->get();
+         
+         
+                   return view('select_marking_place_al')
+                   ->with('row_data',$data)
+                   ->with('year',$year)
+                   ->with('medium',$medium)
+                   ->with('subject',$subject)
+                   ->with('ppr_quntity',$paper_quntity);
+                 
+                break;   
+                case "Hambantota":
+    
+                    $data=marking_places_al::where('distric','=','Anuradapura')
+                    ->orwhere('distric','=','Badulla')
+                    ->orwhere('distric','=','Baticaloa')
+                    ->orwhere('distric','=','Jaffna')
+                    ->orwhere('distric','=','Kalutara')
+                    ->orwhere('distric','=','Kegalle')
+                    ->orwhere('distric','=','Kilinochchi')
+                    ->orwhere('distric','=','Mannar')
+                    ->orwhere('distric','=','Matale')
+                    ->orwhere('distric','=','Polonnaruwa')
+                    ->orwhere('distric','=','Mullaitivu')
+                    ->orwhere('distric','=','Nuwara Eliya')
+                    ->orwhere('distric','=','Puttalam')
+                    ->orwhere('distric','=','Trincomalee')
+                    ->orwhere('distric','=','Vavuniya')
+                    ->get();
+         
+         
+                   return view('select_marking_place_al')
+                   ->with('row_data',$data)
+                   ->with('year',$year)
+                   ->with('medium',$medium)
+                   ->with('subject',$subject)
+                   ->with('ppr_quntity',$paper_quntity);
+                 
+                break;   
+                case "Jaffna":
+    
+                    $data=marking_places_al::where('distric','=','Anuradapura')
+                    ->orwhere('distric','=','Badulla')
+                    ->orwhere('distric','=','Baticaloa')
+                    ->orwhere('distric','=','Amapara')
+                    ->orwhere('distric','=','Kalutara')
+                    ->orwhere('distric','=','Kegalle')
+                    ->orwhere('distric','=','Hambanthota')
+                    ->orwhere('distric','=','Mannar')
+                    ->orwhere('distric','=','Matale')
+                    ->orwhere('distric','=','Polonnaruwa')
+                    ->orwhere('distric','=','Monaragala')
+                    ->orwhere('distric','=','Nuwara Eliya')
+                    ->orwhere('distric','=','Puttalam')
+                    ->orwhere('distric','=','Trincomalee')
+                    ->orwhere('distric','=','Vavuniya')
+                    ->get();
+         
+         
+                   return view('select_marking_place_al')
+                   ->with('row_data',$data)
+                   ->with('year',$year)
+                   ->with('medium',$medium)
+                   ->with('subject',$subject)
+                   ->with('ppr_quntity',$paper_quntity);
+                 
+                break;   
+                case "Kalutara":
+    
+    
+                    $data=marking_places_al::where('distric','=','Anuradapura')
+                    ->orwhere('distric','=','Badulla')
+                    ->orwhere('distric','=','Baticaloa')
+                    ->orwhere('distric','=','Amapara')
+                    ->orwhere('distric','=','Jaffna')
+                    ->orwhere('distric','=','Kegalle')
+                    ->orwhere('distric','=','Hambanthota')
+                    ->orwhere('distric','=','Mannar')
+                    ->orwhere('distric','=','Matale')
+                    ->orwhere('distric','=','Polonnaruwa')
+                    ->orwhere('distric','=','Monaragala')
+                    ->orwhere('distric','=','Nuwara Eliya')
+                    ->orwhere('distric','=','Puttalam')
+                    ->orwhere('distric','=','Trincomalee')
+                    ->orwhere('distric','=','Vavuniya')
+                    ->orwhere('distric','=','Kilinochchi')
+                    ->orwhere('distric','=','Mullaitivu')
+                    ->get();
+         
+         
+                   return view('select_marking_place_al')
+                   ->with('row_data',$data)
+                   ->with('year',$year)
+                   ->with('medium',$medium)
+                   ->with('subject',$subject)
+                   ->with('ppr_quntity',$paper_quntity);
+                 
+                break;   
+                case "Kandy":
+    
+                    $data=marking_places_al::where('distric','=','Colombo')
+                    ->orwhere('distric','=','Matara')
+                    ->orwhere('distric','=','Galle')
+                    ->orwhere('distric','=','Gampaha')
+                    ->orwhere('distric','=','Ratnapura')
+                    ->get();
+         
+         
+                   return view('select_marking_place_al')
+                   ->with('row_data',$data)
+                   ->with('year',$year)
+                   ->with('medium',$medium)
+                   ->with('subject',$subject)
+                   ->with('ppr_quntity',$paper_quntity);
+                 
+                break;   
+                case "Kegalle":
+    
+                    $data=marking_places_al::where('distric','=','Anuradapura')
+                    ->orwhere('distric','=','Badulla')
+                    ->orwhere('distric','=','Baticaloa')
+                    ->orwhere('distric','=','Amapara')
+                    ->orwhere('distric','=','Jaffna')
+                    ->orwhere('distric','=','Kalutara')
+                    ->orwhere('distric','=','Hambanthota')
+                    ->orwhere('distric','=','Mannar')
+                    ->orwhere('distric','=','Matale')
+                    ->orwhere('distric','=','Polonnaruwa')
+                    ->orwhere('distric','=','Monaragala')
+                    ->orwhere('distric','=','Puttalam')
+                    ->orwhere('distric','=','Trincomalee')
+                    ->orwhere('distric','=','Vavuniya')
+                    ->orwhere('distric','=','Kilinochchi')
+                    ->orwhere('distric','=','Mullaitivu')
+                    ->get();
+         
+         
+                   return view('select_marking_place_al')
+                   ->with('row_data',$data)
+                   ->with('year',$year)
+                   ->with('medium',$medium)
+                   ->with('subject',$subject)
+                   ->with('ppr_quntity',$paper_quntity);
+                 
+                break;   
+                case "Kilinochchi":
+    
+                    $data=marking_places_al::where('distric','=','Anuradapura')
+                    ->orwhere('distric','=','Badulla')
+                    ->orwhere('distric','=','Baticaloa')
+                    ->orwhere('distric','=','Amapara')
+                    ->orwhere('distric','=','Jaffna')
+                    ->orwhere('distric','=','Kalutara')
+                    ->orwhere('distric','=','Hambanthota')
+                    ->orwhere('distric','=','Kegalle')
+                    ->orwhere('distric','=','Matale')
+                    ->orwhere('distric','=','Polonnaruwa')
+                    ->orwhere('distric','=','Monaragala')
+                    ->orwhere('distric','=','Puttalam')
+                    ->orwhere('distric','=','Trincomalee')
+                    ->orwhere('distric','=','Vavuniya')
+                    ->get();
+         
+         
+                   return view('select_marking_place_al')
+                   ->with('row_data',$data)
+                   ->with('year',$year)
+                   ->with('medium',$medium)
+                   ->with('subject',$subject)
+                   ->with('ppr_quntity',$paper_quntity);
+                 
+                break; 
+                case "Kurunegala":
+    
+                    $data=marking_places_al::where('distric','=','Colombo')
+                    ->orwhere('distric','=','Matara')
+                    ->orwhere('distric','=','Galle')
+                    ->orwhere('distric','=','Ratnapura')
+                    ->get();
+         
+         
+                   return view('select_marking_place_al')
+                   ->with('row_data',$data)
+                   ->with('year',$year)
+                   ->with('medium',$medium)
+                   ->with('subject',$subject)
+                   ->with('ppr_quntity',$paper_quntity);
+                 
+                break;  
+                case "Mannar":
+    
+                    $data=marking_places_al::where('distric','=','Nuwara Eliya')
+                    ->orwhere('distric','=','Badulla')
+                    ->orwhere('distric','=','Baticaloa')
+                    ->orwhere('distric','=','Amapara')
+                    ->orwhere('distric','=','Jaffna')
+                    ->orwhere('distric','=','Kalutara')
+                    ->orwhere('distric','=','Hambanthota')
+                    ->orwhere('distric','=','Kegalle')
+                    ->orwhere('distric','=','Matale')
+                    ->orwhere('distric','=','Polonnaruwa')
+                    ->orwhere('distric','=','Monaragala')
+                    ->orwhere('distric','=','Trincomalee')
+                    ->get();
+         
+         
+                   return view('select_marking_place_al')
+                   ->with('row_data',$data)
+                   ->with('year',$year)
+                   ->with('medium',$medium)
+                   ->with('subject',$subject)
+                   ->with('ppr_quntity',$paper_quntity);
+                 
+                break;  
+                case "Matale":
+    
+                    $data=marking_places_al::where('distric','=','Baticaloa') 
+                    ->orwhere('distric','=','Hambanthota')
+                    ->orwhere('distric','=','Jaffna')
+                    ->orwhere('distric','=','Kalutara')
+                    ->orwhere('distric','=','Kegalle')
+                    ->orwhere('distric','=','Kilinochchi')
+                    ->orwhere('distric','=','Mannar')
+                    ->orwhere('distric','=','Monaragala')
+                    ->orwhere('distric','=','Mullaitivu')
+                    ->orwhere('distric','=','Nuwara Eliya')
+                    ->orwhere('distric','=','Puttalam')
+                    ->orwhere('distric','=','Trincomalee')
+                    ->orwhere('distric','=','Vavuniya')
+                    ->get();
+         
+         
+                   return view('select_marking_place_al')
+                   ->with('row_data',$data)
+                   ->with('year',$year)
+                   ->with('medium',$medium)
+                   ->with('subject',$subject)
+                   ->with('ppr_quntity',$paper_quntity);
+                 
+                break;  
+                case "Matara":
+    
+                    $data=marking_places_al::where('distric','=','Colombo')
+                    ->orwhere('distric','=','Kandy')
+                    ->orwhere('distric','=','Kurunegala')
+                    ->orwhere('distric','=','Gampaha')
+                    ->get();
+         
+         
+                   return view('select_marking_place_al')
+                   ->with('row_data',$data)
+                   ->with('year',$year)
+                   ->with('medium',$medium)
+                   ->with('subject',$subject)
+                   ->with('ppr_quntity',$paper_quntity);
+                 
+                break;  
+                case "Monaragala":
+    
+                    $data=marking_places_al::where('distric','=','Anuradapura') 
+                    ->orwhere('distric','=','Baticaloa')
+                    ->orwhere('distric','=','Jaffna')
+                    ->orwhere('distric','=','Kalutara')
+                    ->orwhere('distric','=','Kegalle')
+                    ->orwhere('distric','=','Kilinochchi')
+                    ->orwhere('distric','=','Mannar')
+                    ->orwhere('distric','=','Matale')
+                    ->orwhere('distric','=','Mullaitivu')
+                    ->orwhere('distric','=','Nuwara Eliya')
+                    ->orwhere('distric','=','Puttalam')
+                    ->orwhere('distric','=','Trincomalee')
+                    ->orwhere('distric','=','Vavuniya')
+                    ->orwhere('distric','=','Polonnaruwa')
+                    ->get();
+         
+         
+                   return view('select_marking_place_al')
+                   ->with('row_data',$data)
+                   ->with('year',$year)
+                   ->with('medium',$medium)
+                   ->with('subject',$subject)
+                   ->with('ppr_quntity',$paper_quntity);
+                 
+                break;  
+                case "Mullaitivu":
+    
+                    $data=marking_places_al::where('distric','=','Amapara') 
+                    ->orwhere('distric','=','Anuradapura')
+                    ->orwhere('distric','=','Badulla')
+                    ->orwhere('distric','=','Baticaloa')
+                    ->orwhere('distric','=','Hambanthota')
+                    ->orwhere('distric','=','Kalutara')
+                    ->orwhere('distric','=','Kegalle')
+                    ->orwhere('distric','=','Matale')
+                    ->orwhere('distric','=','Monaragala')
+                    ->orwhere('distric','=','Nuwara Eliya')
+                    ->orwhere('distric','=','Puttalam')
+                    ->orwhere('distric','=','Polonnaruwa')
+                    ->get();
+         
+         
+                   return view('select_marking_place_al')
+                   ->with('row_data',$data)
+                   ->with('year',$year)
+                   ->with('medium',$medium)
+                   ->with('subject',$subject)
+                   ->with('ppr_quntity',$paper_quntity);
+                 
+                break;  
+                case "Nuwara Eliya":
+    
+                    $data=marking_places_al::where('distric','=','Amapara') 
+                    ->orwhere('distric','=','Anuradapura')
+                    ->orwhere('distric','=','Baticaloa')
+                    ->orwhere('distric','=','Jaffna')
+                    ->orwhere('distric','=','Hambanthota')
+                    ->orwhere('distric','=','Kalutara')
+                    ->orwhere('distric','=','Kilinochchi')
+                    ->orwhere('distric','=','Matale')
+                    ->orwhere('distric','=','Monaragala')
+                    ->orwhere('distric','=','Mannar')
+                    ->orwhere('distric','=','Puttalam')
+                    ->orwhere('distric','=','Polonnaruwa')
+                    ->orwhere('distric','=','Mullaitivu')
+                    ->orwhere('distric','=','Trincomalee')
+                    ->orwhere('distric','=','Vavuniya')
+                    ->get();
+         
+         
+                   return view('select_marking_place_al')
+                   ->with('row_data',$data)
+                   ->with('year',$year)
+                   ->with('medium',$medium)
+                   ->with('subject',$subject)
+                   ->with('ppr_quntity',$paper_quntity);
+                 
+                break; 
+                
+                case "Polonnaruwa":
+    
+                    $data=marking_places_al::where('distric','=','Badulla') 
+                    ->orwhere('distric','=','Hambanthota')
+                    ->orwhere('distric','=','Jaffna')
+                    ->orwhere('distric','=','Kalutara')
+                    ->orwhere('distric','=','Kegalle')
+                    ->orwhere('distric','=','Kilinochchi')
+                    ->orwhere('distric','=','Mannar')
+                    ->orwhere('distric','=','Monaragala')
+                    ->orwhere('distric','=','Mullaitivu')
+                    ->orwhere('distric','=','Nuwara Eliya')
+                    ->orwhere('distric','=','Puttalam')
+                    ->orwhere('distric','=','Vavuniya')
+                    ->get();
+         
+         
+                   return view('select_marking_place_al')
+                   ->with('row_data',$data)
+                   ->with('year',$year)
+                   ->with('medium',$medium)
+                   ->with('subject',$subject)
+                   ->with('ppr_quntity',$paper_quntity);
+                 
+                break;   
+                case "Puttalam":
+    
+                    $data=marking_places_al::where('distric','=','Badulla') 
+                    ->orwhere('distric','=','Amapara')
+                    ->orwhere('distric','=','Baticaloa')
+                    ->orwhere('distric','=','Hambanthota')
+                    ->orwhere('distric','=','Jaffna')
+                    ->orwhere('distric','=','Kalutara')
+                    ->orwhere('distric','=','Kegalle')
+                    ->orwhere('distric','=','Kilinochchi')
+                    ->orwhere('distric','=','Matale')
+                    ->orwhere('distric','=','Monaragala')
+                    ->orwhere('distric','=','Mullaitivu')
+                    ->orwhere('distric','=','Nuwara Eliya')
+                    ->orwhere('distric','=','Polonnaruwa')
+                    ->orwhere('distric','=','Trincomalee')
+                    ->orwhere('distric','=','Vavuniya')
+                    ->get();
+         
+         
+                   return view('select_marking_place_al')
+                   ->with('row_data',$data)
+                   ->with('year',$year)
+                   ->with('medium',$medium)
+                   ->with('subject',$subject)
+                   ->with('ppr_quntity',$paper_quntity);
+                 
+                break;   
+                case "Ratnapura":
+    
+                    $data=marking_places_al::where('distric','=','Gampaha')
+                    ->orwhere('distric','=','Kandy')
+                    ->orwhere('distric','=','Kurunegala')
+                    ->get();
+         
+         
+                   return view('select_marking_place_al')
+                   ->with('row_data',$data)
+                   ->with('year',$year)
+                   ->with('medium',$medium)
+                   ->with('subject',$subject)
+                   ->with('ppr_quntity',$paper_quntity);
+                 
+                break;   
+                case "Trincomalee":
+    
+                
+                    $data=marking_places_al::where('distric','=','Badulla') 
+                    ->orwhere('distric','=','Amapara')
+                    ->orwhere('distric','=','Hambanthota')
+                    ->orwhere('distric','=','Jaffna')
+                    ->orwhere('distric','=','Kalutara')
+                    ->orwhere('distric','=','Kegalle')
+                    ->orwhere('distric','=','Kilinochchi')
+                    ->orwhere('distric','=','Mannar')
+                    ->orwhere('distric','=','Matale')
+                    ->orwhere('distric','=','Monaragala')
+                    ->orwhere('distric','=','Nuwara Eliya')
+                    ->orwhere('distric','=','Puttalam')
+                    ->get();
+         
+         
+                   return view('select_marking_place_al')
+                   ->with('row_data',$data)
+                   ->with('year',$year)
+                   ->with('medium',$medium)
+                   ->with('subject',$subject)
+                   ->with('ppr_quntity',$paper_quntity);
+                 
+                
+                break;   
+                case "Vavuniya":
+    
+                    $data=marking_places_al::where('distric','=','Badulla') 
+                    ->orwhere('distric','=','Amapara')
+                    ->orwhere('distric','=','Hambanthota')
+                    ->orwhere('distric','=','Jaffna')
+                    ->orwhere('distric','=','Kalutara')
+                    ->orwhere('distric','=','Kegalle')
+                    ->orwhere('distric','=','Kilinochchi')
+                    ->orwhere('distric','=','Baticaloa')
+                    ->orwhere('distric','=','Matale')
+                    ->orwhere('distric','=','Monaragala')
+                    ->orwhere('distric','=','Nuwara Eliya')
+                    ->orwhere('distric','=','Puttalam')
+                    ->orwhere('distric','=','Polonnaruwa')
+                    ->get();
+         
+         
+                   return view('select_marking_place_al')
+                   ->with('row_data',$data)
+                   ->with('year',$year)
+                   ->with('medium',$medium)
+                   ->with('subject',$subject)
+                   ->with('ppr_quntity',$paper_quntity);
+                 
+                break;   
+                                                                                                                                                                                                                                              
+    
+    
+            } 
+        }
+        
+        
+       
+
         
         
         
         
         
         
-        return view('select_marking_place');
+       // return view('select_marking_place');
+    }
+
+    public function mark_as_select_ol($id)
+    {   
+      
+            $complete=marking_places_ol::find($id);
+            $complete->is_complete=1;
+            $complete->save();
+            return redirect()->back();
+       
+    }
+
+    public function mark_as_not_select_ol($id)
+    {
+       
+            $complete=marking_places_ol::find($id);
+            $complete->is_complete=0;
+            $complete->save();
+            return redirect()->back();
+       
+    }
+
+    public function generate_qr_code_ol_marking_place($id)
+    {
+
+             $complete=marking_places_ol::find($id);
+             $complete->is_complete=1;
+             $complete->save();
+      
+            $genarate_qr=marking_places_ol::find($id);
+            return view('qr_code_page_ol_for_marking')->with('qr_data',$genarate_qr);
+        
+       
+
+
+    }
+
+    public function mark_as_select_al($id)
+    {   
+      
+            $complete=marking_places_al::find($id);
+            $complete->is_complete=1;
+            $complete->save();
+            return redirect()->back();
+       
+    }
+
+    public function mark_as_not_select_al($id)
+    {
+       
+            $complete=marking_places_al::find($id);
+            $complete->is_complete=0;
+            $complete->save();
+            return redirect()->back();
+       
+    }
+
+    public function generate_qr_code_al_marking_place($id)
+    {
+
+             $complete=marking_places_al::find($id);
+             $complete->is_complete=1;
+             $complete->save();
+      
+            $genarate_qr=marking_places_al::find($id);
+            return view('qr_code_page_ol_for_marking')->with('qr_data',$genarate_qr);
+        
+       
+
+
     }
 
 }

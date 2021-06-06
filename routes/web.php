@@ -10,6 +10,12 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/admin', function () {
+    return view('admin_login');
+});
+Route::get('/admin_dash', function () {
+    return view('admin_dashbord');
+});
 
 Route::get('/', function () {
     return view('welcome');
@@ -34,10 +40,21 @@ Route::get('/al_paper_bundel', function () {
     
 });
 
-Route::get('/set_place_to_marking', function () {
-    return view('set_place_to_marking');
+Route::get('/set_place_to_marking_ol', function () {
+    return view('set_place_to_marking_ol');
     
 });
+
+Route::get('/set_place_to_marking_al', function () {
+    return view('set_place_to_marking_al');
+    
+});
+
+
+
+
+
+
 
 Route::get('/genarate_qr_code', function () {
     $data=App\ol_paper_details::all();
@@ -49,7 +66,9 @@ Route::post('/add_ol_paper_details', 'manage_paper_details_controller@store_ol_d
 
 Route::post('/add_al_paper_details', 'manage_paper_details_controller@store_al_details');
 
-Route::post('/set_marking_place', 'manage_paper_details_controller@store_set_marking_place_details');
+Route::post('/set_marking_place_ol', 'manage_paper_details_controller@store_set_marking_place_details_ol');
+
+Route::post('/set_marking_place_al', 'manage_paper_details_controller@store_set_marking_place_details_al');
 
 Route::get('/select_details', 'manage_paper_details_controller@select_details_from_table');
 
@@ -72,8 +91,25 @@ Route::get('/genarate_qr_code_page/{id}/{exam_type}','manage_paper_details_contr
     //return view('select_marking_place');
     
 //});
-Route::get('/show_marking_place_database','manage_paper_details_controller@show_marking_place_database');
+Route::get('/show_marking_place_database_ol','manage_paper_details_controller@show_marking_place_database_ol');
 
-Route::get('/delete_marking_place/{id}','manage_paper_details_controller@delete_marking_place');
+Route::get('/show_marking_place_database_al','manage_paper_details_controller@show_marking_place_database_al');
+
+Route::get('/delete_marking_place_ol/{id}','manage_paper_details_controller@delete_marking_place_ol');
+
+Route::get('/delete_marking_place_al/{id}','manage_paper_details_controller@delete_marking_place_al');
 
 Route::get('/select_marking_place/{year}/{paper_quntity}/{distric}/{medium}/{subject}/{exam_type}','manage_paper_details_controller@select_marking_place');
+
+
+Route::get('/mark_as_select_ol/{id}','manage_paper_details_controller@mark_as_select_ol');
+
+Route::get('/mark_as_not_select_ol/{id}','manage_paper_details_controller@mark_as_not_select_ol');
+
+Route::get('/generate_qr_code_ol_marking_place/{id}','manage_paper_details_controller@generate_qr_code_ol_marking_place');
+
+Route::get('/mark_as_select_al/{id}','manage_paper_details_controller@mark_as_select_al');
+
+Route::get('/mark_as_not_select_al/{id}','manage_paper_details_controller@mark_as_not_select_al');
+
+Route::get('/generate_qr_code_al_marking_place/{id}','manage_paper_details_controller@generate_qr_code_al_marking_place');

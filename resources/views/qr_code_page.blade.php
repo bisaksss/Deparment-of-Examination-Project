@@ -4,6 +4,31 @@
 <title>QR Code for Bundle</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<style>
+    .logo_gov img
+{
+   width:50px;
+   height:auto;
+}
+footer {
+    position: fixed;
+    height: 50px;
+    width: 100%;
+    background-color: #333333;
+    bottom:0;
+   
+}
+
+p.copyright {
+    position: absolute;
+    width: 100%;
+    color: #fff;
+    line-height: 40px;
+    font-size: 0.7em;
+    text-align: center;
+    bottom:0;
+}
+</style>
 </head>
 <body>
 <div id="app">
@@ -109,6 +134,10 @@
 	</div>
 
 </div>
+<footer>
+    
+    <p class="copyright">© Department of Examination 2020</p>
+    </footer>
 
 </body>
 
