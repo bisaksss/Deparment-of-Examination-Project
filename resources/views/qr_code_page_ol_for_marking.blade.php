@@ -1,118 +1,39 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QR Code for Bundle</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<style>
+           .logo_gov img
+            {
+            width:50px;
+            height:auto;
+            }
+            footer {
+                position: fixed;
+                height: 50px;
+                width: 100%;
+                background-color: #333333;
+                bottom:0;
+            
+            }
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>Department of Examination</title>
-
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <style>
-    .container_btn_img {
-    position: relative;
-     width: 100%;
-     max-width: 300px;
-     margin:5px;
-       
-        
-    }
-
-    .container_btn_img img {
-    width: 100%;
-    height: auto;
-    opacity: 0.5;
-    border-radius: 20%;
-    }
-
-     .container_btn_img .btn {
-     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    background-color: #555;
-    color: black;
-    font-size: 16px;
-    padding: 12px 24px;
-    border:solid 2px black;
-    cursor: pointer;
-    border-radius: 5px;
-    text-align: center;
-    background:  transparent;
-    font-weight:bold;
-        
-    }
-
-    .container_btn_img .btn:hover {
-    background-color: #0d669e;
-        
-    }
-    .imgcontainer {
-    text-align: center;
-    margin: 24px 0 12px 0;
-       
-    }
-    img.avatar {
-    width: 40%;
-    border-radius: 50%;
-    }    
-
-    
-    .logo_gov img
-    {
-       width:50px;
-       height:auto;
-    }
-   
-    footer {
-        position: fixed;
-        height: 50px;
-        width: 100%;
-        background-color: #333333;
-        bottom:0;
-       
-    }
-
-    p.copyright {
-        position: absolute;
-        width: 100%;
-        color: #fff;
-        line-height: 40px;
-        font-size: 0.7em;
-        text-align: center;
-        bottom:0;
-    }
-
-    .admin_login
-    {
-    float:right;
-    }
-    .space
-    {
-        padding-bottom: 50px;
-    }
-
-    
-    </style>
+            p.copyright {
+                position: absolute;
+                width: 100%;
+                color: #fff;
+                line-height: 40px;
+                font-size: 0.7em;
+                text-align: center;
+                bottom:0;
+            }
+       </style>
 </head>
 <body>
-    <div id="app">
+<div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-            <div class="logo_gov">
-            <img src="img/gov_logo.png">
-            </div>
                 <a class="navbar-brand" href="{{ url('/home') }}">
                     Department of Examination
                 </a>
@@ -140,9 +61,9 @@
                             @endif-->
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                               
                                     {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
+                                    <a href="/genarate_qr_code"><button type="button" class="btn btn-light">Back</button></a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
@@ -166,10 +87,67 @@
             @yield('content')
         </main>
     </div>
-    <footer>
+
+
+
+
+
+<div class="container">
+
+<!--<h2 class="text-center">QR Code for Bundle No {{$qr_data->bundle_number}}({{$qr_data->exam_type}})</h2>-->
+<br>
+<br>
+    <div class="row">
+		
+			<div class="col-md-12" id="printDiv">
+				    <h5  class="text-center">QR Code For Place to Marking</h5>
+					<div class="text-center justify-content-center" >
+					@php
+				
+    				$var=QrCode::size(200)->generate("Distric = {$qr_data->distric},place = {$qr_data->place},Subject = {$qr_data->subject} ");
+					echo $var;
+					@endphp
+					</div>
+					<br>
+					<br>
+					
+			</div>
+			<div class="col-md-12  text-center">
+			<button type="button" class="btn btn-primary" id="doPrint">Print QR</button>
+			</div>
+		
+
+			<!--<div class="col-md-4">
+				<h5>Qr Code With Color</h5>
+     {!! QrCode::size(200)->backgroundColor(255,55,0)->generate('W3Adda Laravel Tutorial'); !!}
+				
+			</div>-->
+		
+			<!--<div class="col-md-4">
+				<h5>Qr cCode For Bundle</h5>
+				
+				<img src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->merge('https://www.w3adda.com/wp-content/uploads/2019/07/laravel.png', 0.3, true)
+                        ->size(200)->errorCorrection('H')
+                        ->generate('Bisak Sampath')) !!} ">
+             </div>-->
+			
+	</div>
+
+</div>
+<footer>
     
     <p class="copyright">© Department of Examination 2020</p>
-    </footer>
-  
+</footer>
+
 </body>
+
 </html>
+<script>
+document.getElementById("doPrint").addEventListener("click", function() {
+     var printContents = document.getElementById('printDiv').innerHTML;
+     var originalContents = document.body.innerHTML;
+     document.body.innerHTML = printContents;
+     window.print();
+     document.body.innerHTML = originalContents;
+});
+</script>

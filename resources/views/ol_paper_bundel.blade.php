@@ -14,13 +14,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>O/L paper bundle</title>
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+            <div class="logo_gov">
+            <img src="img/gov_logo.png">
+            </div>
+                <a class="navbar-brand" href="{{ url('/home') }}">
                     Department of Examination
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -47,9 +51,9 @@
                             @endif-->
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                              
                                     {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
+                                    <a href="/home"><button type="button" class="btn btn-light">Back</button></a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
@@ -80,13 +84,15 @@
 
 
 
-    <div class="container">
+    <div class="container space">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="text-center">
 
 
                          <h1 class="font-weight-normal">  G.C.E(O/L) </h1>
+                         <h3 class="font-weight-normal text-danger"> First Add Level 2 Districts </h3>
+                         <h5 class="font-weight-normal text-secondary text-respo"> Colombo/Gampaha/Kandy/Matara/<br>Galle/Kurunagala/Rathnapura </h5>
 
                             <br>
                             <br>
@@ -94,7 +100,7 @@
                                  <div class="card-header text-left font-weight-bold">O/L Paper bundle Details</div>
                                     <div class="card-body">
                                        
-                                            <form action="add_ol_paper_details" method="post">
+                                            <form action="/add_ol_paper_details" method="post">
                                             
                                             {{csrf_field()}}
 
@@ -108,7 +114,7 @@
                                                     <br>
                                                     <br>
 
-                                                    <label for="paper_quntity" class="col-md-4 col-form-label text-md-right">Paper Quntity :</label>
+                                                    <label for="paper_quntity" class="col-md-4 col-form-label text-md-right">Paper Quantity :</label>
                                                     <div class="col-md-6">
                                                     <input type="number" name="paper_quntity" class="form-control">
                                                     </div>
@@ -124,7 +130,43 @@
                                                     <br>
                                                     <br>
 
+                                                       
+                                                    <label for="distric" class="col-md-4 col-form-label text-md-right">District</label>
+                                                        <div class="col-md-6">
+                                                        <select class="form-control" id="distric" name="distric">
+                                                        <option>Ampara</option>
+                                                        <option>Anuradhapura</option>
+                                                        <option>Badulla</option>
+                                                        <option>Batticaloa</option>
+                                                        <option>Colombo</option>
+                                                        <option>Galle</option>
+                                                        <option>Gampaha</option>
+                                                        <option>Hambantota</option>
+                                                        <option>Jaffna</option>
+                                                        <option>Kalutara</option>
+                                                        <option>Kandy</option>
+                                                        <option>Kegalle</option>
+                                                        <option>Kilinochchi</option>
+                                                        <option>Kurunegala</option>
+                                                        <option>Mannar</option>
+                                                        <option>Matale</option>
+                                                        <option>Matara</option>
+                                                        <option>Monaragala</option>
+                                                        <option>Mullaitivu</option>
+                                                        <option>Nuwara Eliya</option>
+                                                        <option>Polonnaruwa</option>
+                                                        <option>Puttalam</option>
+                                                        <option>Ratnapura</option>
+                                                        <option>Trincomalee</option>
+                                                        <option>Vavuniya</option>
+                                                        
+                                                        </select>
+                                                        </div>
 
+                                                        <br>
+                                                        <br>
+
+                                                        
                                                     <label for="writing_place" class="col-md-4 col-form-label text-md-right">Writing Place :</label>
                                                     <div class="col-md-6">
                                                     <input type="text" name="writing_place" class="form-control">
@@ -140,7 +182,7 @@
                                                     <select class="form-control" id="medium" name="medium">
                                                     <option>Sinhala</option>
                                                     <option>Tamil</option>
-                                                    <option>Sinhala</option>
+                                                    <option>English</option>
                                                     
                                                     </select>
                                                     </div>
@@ -174,5 +216,9 @@
             </div>
         </div>
     </div>
+    <footer>
+    
+    <p class="copyright">© Department of Examination 2020</p>
+    </footer>
 </body>
 </html>

@@ -5,12 +5,25 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Department of examination</title>
-
+        <!--pre-loder-->
+        <link rel="stylesheet" type="text/css" href="css/style.css">
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
         <!-- Styles -->
         <style>
+       
+      
+            .hero-image {
+            background-image: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("img/gov_logo.png");
+            background-color: #cccccc;
+            height: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            position: relative;
+           
+            }
             html, body {
                 background-color: #fff;
                 color: #636b6f;
@@ -46,6 +59,8 @@
 
             .title {
                 font-size: 84px;
+                font-weight: bold;
+               
             }
 
             .links > a {
@@ -61,43 +76,49 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+
         </style>
     </head>
     <body>
- 
-        <div class="flex-center position-ref full-height">
-            
+        <div class="loder">
+            <img src="img/ajax-loader.gif">
+        </div>
+        <div class="hero-image">
+            <div class="flex-center position-ref full-height">
+                
 
-            <div class="content">
-                <div class="title m-b-md">
-                    Department of Examination
+                <div class="content">
+                    <div class="title m-b-md">
+                        Department of Examination
+                    </div>
+
+                    @if (Route::has('login'))
+                    <div class="links">
+                        @auth
+                            <a href="{{ url('/home') }}">Home</a>
+                        @else
+                            <a href="{{ route('login') }}"><button type="button" class="btn btn-success btn-lg">Login</button></a>
+
+                        <!-- @if (Route::has('register'))
+                                <a href="{{ route('register') }}">Register</a>
+                            @endif-->
+                        @endauth
+                    </div>
+                @endif
+
+                    <!--<div class="links">
+                        <a href="https://laravel.com/docs">Docs</a>
+                        <a href="https://laracasts.com">Laracasts</a>
+                        <a href="https://laravel-news.com">News</a>
+                        <a href="https://blog.laravel.com">Blog</a>
+                        <a href="https://nova.laravel.com">Nova</a>
+                        <a href="https://forge.laravel.com">Forge</a>
+                        <a href="https://github.com/laravel/laravel">GitHub</a>
+                    </div>-->
                 </div>
-
-                @if (Route::has('login'))
-                <div class="links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}"><button type="button" class="btn btn-primary">Login</button></a>
-
-                       <!-- @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif-->
-                    @endauth
-                </div>
-            @endif
-
-                <!--<div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>-->
             </div>
         </div>
-
+        
+    <script type="text/javascript" src="js/script.js"></script>
     </body>
 </html>
