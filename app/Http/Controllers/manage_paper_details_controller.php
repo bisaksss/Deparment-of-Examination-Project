@@ -7,10 +7,12 @@ use App\ol_paper_details;
 use App\al_paper_details;
 use App\marking_places_ol;
 use App\marking_places_al;
+
 use App\admin_login;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Crypt;
 use Auth;
+
 
 
 class manage_paper_details_controller extends Controller
@@ -1552,6 +1554,7 @@ class manage_paper_details_controller extends Controller
 
 
     }
+
     public function admin_register(request $request)
     {
         $admin_login= new admin_login;
@@ -1603,6 +1606,6 @@ class manage_paper_details_controller extends Controller
        
     }
 
-  
+
 
 }
