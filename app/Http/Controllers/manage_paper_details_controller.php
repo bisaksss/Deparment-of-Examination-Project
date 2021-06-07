@@ -8,6 +8,13 @@ use App\al_paper_details;
 use App\marking_places_ol;
 use App\marking_places_al;
 
+use App\admin_login;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Crypt;
+use Auth;
+
+
+
 class manage_paper_details_controller extends Controller
 {
     public function store_ol_details(request $request)
@@ -1547,5 +1554,58 @@ class manage_paper_details_controller extends Controller
 
 
     }
+
+    public function admin_register(request $request)
+    {
+        $admin_login= new admin_login;
+        $admin_login->name=$request->name;
+        $admin_login->email=$request->email;
+        $hash_password = Hash::make($request->password); 
+        $admin_login->password=$hash_password;
+        $admin_login->save();
+        return redirect()->back();
+    }
+
+    public function admin_login(request $request)
+    {
+        //$data=admin_login::find($request->email);
+        $enter_password=$request->password; 
+        $user = admin_login::where('email', '=', $request->email)->first();
+        if($user)
+        {
+            if(Hash::check( $enter_password, $user->password))
+            {
+                return view('admin_dashbord')->with('user_name',$user);
+            }
+            else 
+            {
+                $error='Invalid password';
+                return view('admin_login')->with('err',$error);
+            }
+       
+            
+        }
+        else
+        {
+            $error='Invalid Email';
+            return view('admin_login')->with('err',$error);
+        }
+        
+   
+   
+     
+
+    }
+
+
+
+    public function admin_logout1(Request $request) 
+    {
+        Auth::logout();
+        return redirect('/login');
+       
+    }
+
+
 
 }

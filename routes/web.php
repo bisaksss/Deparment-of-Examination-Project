@@ -11,10 +11,19 @@
 |
 */
 Route::get('/admin', function () {
+
+    $error='';
+    return view('admin_login')->with('err',$error);
+});
+
+Route::get('/admin_reg', function () {
+    return view('admin_register');
+
     return view('admin_login');
 });
 Route::get('/admin_dash', function () {
     return view('admin_dashbord');
+
 });
 
 Route::get('/', function () {
@@ -112,4 +121,15 @@ Route::get('/mark_as_select_al/{id}','manage_paper_details_controller@mark_as_se
 
 Route::get('/mark_as_not_select_al/{id}','manage_paper_details_controller@mark_as_not_select_al');
 
+
 Route::get('/generate_qr_code_al_marking_place/{id}','manage_paper_details_controller@generate_qr_code_al_marking_place');
+
+Route::post('/admin_login', 'manage_paper_details_controller@admin_login');
+
+Route::post('/admin_register', 'manage_paper_details_controller@admin_register');
+
+Route::get('/admin_logout','manage_paper_details_controller@admin_logout1');
+
+
+Route::get('/generate_qr_code_al_marking_place/{id}','manage_paper_details_controller@generate_qr_code_al_marking_place');
+
