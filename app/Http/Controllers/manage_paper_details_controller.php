@@ -7,12 +7,10 @@ use App\ol_paper_details;
 use App\al_paper_details;
 use App\marking_places_ol;
 use App\marking_places_al;
-
 use App\admin_login;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Crypt;
 use Auth;
-
 
 
 class manage_paper_details_controller extends Controller
@@ -1554,7 +1552,6 @@ class manage_paper_details_controller extends Controller
 
 
     }
-
     public function admin_register(request $request)
     {
         $admin_login= new admin_login;
@@ -1605,7 +1602,81 @@ class manage_paper_details_controller extends Controller
         return redirect('/login');
        
     }
+    public function save_edit_ol_al_details(request $request)
+    {
+        if($request->data_exam_type == 'ol')
+        {
+          $data=ol_paper_details::find($request->data_id);
+
+            $data->bundle_number=$request->bundle_number;
+            $data->paper_quntity=$request->paper_quntity;
+            $data->year=$request->year;
+            $data->distric=$request->distric;
+            $data->writing_place=$request->writing_place;
+            $data->medium=$request->medium;
+            $data->subject=$request->subject;
+            $data->save();
+            return redirect()->back();
 
 
+        }
+
+        elseif($request->data_exam_type == 'al')
+        {
+            $data=al_paper_details::find($request->data_id);
+
+            $data->bundle_number=$request->bundle_number;
+            $data->paper_quntity=$request->paper_quntity;
+            $data->year=$request->year;
+            $data->distric=$request->distric;
+            $data->writing_place=$request->writing_place;
+            $data->medium=$request->medium;
+            $data->subject=$request->subject;
+            $data->save();
+            return redirect()->back();
+        }
+        else
+        {
+            echo 'something going wrong';
+        }
+
+    }
+
+    public function save_edit_marking_place_ol(request $request)
+    {
+
+        $marking_places_edit=marking_places_ol::find($request->id_ol_Edit);
+        $marking_places_edit->distric=$request->distric;
+        $marking_places_edit->place=$request->place;
+        $marking_places_edit->medium=$request->medium;
+        $marking_places_edit->subject=$request->subject;
+        $marking_places_edit->paper_quntity=$request->paper_quntity;
+        $marking_places_edit->year=$request->year;
+
+        $marking_places_edit->save();
+        $data=marking_places_ol::all();
+
+        return view('marking_places_ol')->with('marking_place_data',$data);
+    }
+    
+    public function save_edit_marking_place_al(request $request)
+    {
+
+        $marking_places_edit=marking_places_al::find($request->id_al_Edit);
+        $marking_places_edit->distric=$request->distric;
+        $marking_places_edit->place=$request->place;
+        $marking_places_edit->medium=$request->medium;
+        $marking_places_edit->subject=$request->subject;
+        $marking_places_edit->paper_quntity=$request->paper_quntity;
+        $marking_places_edit->year=$request->year;
+
+        $marking_places_edit->save();
+        $data=marking_places_al::all();
+
+        return view('marking_places_al')->with('marking_place_data',$data);
+    }
+ 
+
+  
 
 }

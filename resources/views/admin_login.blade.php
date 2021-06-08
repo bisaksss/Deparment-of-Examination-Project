@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -167,32 +166,21 @@
             @yield('content')
         </main>
     </div>
-
-@extends('layouts.app')
-
-@section('content')
-
 <div class="container space">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Admin Login') }}
-
                 <div class="text-danger" role="alert">
                 {{$err}}
                 </div>
-
-
                 </div>
 
 
                 <div class="card-body">
                
-
+                
                     <form method="POST" action="/admin_login">
-
-                    <form method="POST" action="">
-
                     <div class="imgcontainer">
                     <img src="img/admin_login.png" alt="Avatar" class="avatar">
                     </div>
@@ -231,7 +219,8 @@
                             <div class="col-md-6 offset-md-4">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                            <label class="form-check-label" for="remember">
+                                
+                                    <label class="form-check-label" for="remember">
                                         {{ __('Remember Me') }}
                                     </label>
                                 </div>
@@ -259,7 +248,6 @@
         </div>
     </div>
 </div>
-
 <footer>
     
     <p class="copyright">© Department of Examination 2020</p>
@@ -267,6 +255,3 @@
   
 </body>
 </html>
-
-@endsection
-
