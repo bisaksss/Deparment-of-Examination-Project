@@ -15,10 +15,15 @@ Route::get('/admin', function () {
     return view('admin_login')->with('err',$error);
 });
 
+
+
 Route::get('/admin_reg', function () {
     return view('admin_register');
 });
 
+Route::get('/login', function () {
+    return view('login');
+});
 Route::get('/', function () {
     return view('welcome');
 });
@@ -26,9 +31,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-
-
 
 
 Route::get('/ol_paper_bundel', function () {
@@ -60,7 +62,12 @@ Route::get('/set_place_to_marking_al', function () {
 
 Route::get('/genarate_qr_code', function () {
     $data=App\ol_paper_details::all();
-    return view('genarate_qr_code')->with('table_data',$data);
+    return view('genarate_qr_code')->with('table_data',$data)->with('exam_name','O/L');
+    
+});
+Route::get('/admin_genarate_qr_code', function () {
+    $data=App\ol_paper_details::all();
+    return view('admin_genarate_qr_code')->with('table_data',$data)->with('exam_name','O/L');
     
 });
 
@@ -73,6 +80,8 @@ Route::post('/set_marking_place_ol', 'manage_paper_details_controller@store_set_
 Route::post('/set_marking_place_al', 'manage_paper_details_controller@store_set_marking_place_details_al');
 
 Route::get('/select_details', 'manage_paper_details_controller@select_details_from_table');
+
+Route::get('/admin_select_details', 'manage_paper_details_controller@admin_select_details_from_table');
 
 Route::get('/delete_data','manage_paper_details_controller@delete_data');
 
@@ -168,3 +177,17 @@ Route::get('/edit_marking_place_al/{id}', function ($id) {
 });
 
 Route::post('/save_edit_marking_place_al', 'manage_paper_details_controller@save_edit_marking_place_al');
+
+Route::get('/manage_users','manage_paper_details_controller@manage_users_page_data');
+
+Route::get('/delete_user/{id}','manage_paper_details_controller@delete_user');
+
+
+Route::get('/clear_login','manage_paper_details_controller@clear_login');
+
+Route::get('/verify_user/{id}','manage_paper_details_controller@verify_user');
+
+Route::get('/un_verify_user/{id}','manage_paper_details_controller@un_verify_user');
+
+
+

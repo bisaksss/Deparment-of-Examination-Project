@@ -43,18 +43,18 @@
 
                 <div class="container_btn_img">
                     <img src="img/paper_bundel.jpg" alt="Snow" style="width:100%">
-                    <a href="/genarate_qr_code"> <button type="button" class="btn btn-outline-secondary">Manage Paper Bundle</button></a>
+                    <a href="/admin_genarate_qr_code"> <button type="button" class="btn btn-outline-secondary">Manage Paper Bundle</button></a>
                 </div>
 
                 <div class="container_btn_img">
                     <img src="img/mannage_user.jpg" alt="Snow" style="width:100%">
-                    <a href="/genarate_qr_code"> <button type="button" class="btn btn-outline-secondary">Manage Users</button></a>
+                    <a href="/manage_users"> <button type="button" class="btn btn-outline-secondary">Manage Users</button></a>
                 </div>
 
 
                 <div class="container_btn_img">
                     <img src="img/barcode_reader.jpg" alt="Snow" style="width:100%">
-                    <a href="#"><button type="button" class="btn btn-outline-secondary">Read Barcode</button></a>
+                    <a href="#"><button type="button" class="btn btn-outline-secondary">Read QR</button></a>
                 </div>
             
                    <!-- <div class="input-group-prepend">

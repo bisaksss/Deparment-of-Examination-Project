@@ -17,7 +17,7 @@
             <div class="logo_gov">
             <img src="img/gov_logo.png">
             </div>
-                <a class="navbar-brand" href="{{ url('/home') }}">
+                <a class="navbar-brand" href="{{ url('/admin') }}">
                     Department of Examination
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -54,6 +54,7 @@
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
+                                
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
@@ -62,6 +63,8 @@
                             </li>
                         @endguest
                     </ul>
+                    <!--<a href="/admin_dashbord_back"><button type="button" class="btn btn-light">Back</button></a> -->
+                    
                 </div>
             </div>
         </nav>
@@ -70,16 +73,16 @@
             @yield('content')
         </main>
     </div>
-
+  
 
 
                 <div class="container space">
                           
                          
                     <div class="text-center">
-                        <h1>Genarate QR code</h1>
+                        <h1>Genarate QR code & Select Marking Place</h1>
 
-                        <form action="select_details" method="get" class="form-group form_dec">
+                        <form action="admin_select_details" method="get" class="form-group form_dec">
                                 {{csrf_field()}}
                                 
                                         <div class="checkbox">
@@ -95,12 +98,12 @@
                                         <br>
                                         <input type="submit" value="Submit" class="btn btn-primary">
                                 </form> 
-
+                              
+                        
                             <div class="row">
                             
 
                                 <div class="col-md-12">
-
                                 <div class="p-3 mb-2 bg-light text-dark"><b>Table {{$exam_name}}</b></div>
                                     <table class="table table-dark">
                                     <thead>
@@ -114,7 +117,7 @@
                                     <th>Subject</th>
                                     <th>Action</th>
                                     <th>Genarate QR</th>
-                                   <!-- <th>Select</th>-->
+                                    <th>Select</th>
                                     </tr>
                                     </thead>
                                     @foreach($table_data as $data)
@@ -128,6 +131,7 @@
                                     <td>{{$data->writing_place}}</td>
                                     <td>{{$data->medium}}</td>
                                     <td>{{$data->subject}}</td>
+                                    
 
                                   
                                     <td>
@@ -143,10 +147,10 @@
                                     <a href="/genarate_qr_code_page/{{$data->id}}/{{$data->exam_type}}"><button class="btn btn-warning">Genarate QR</button></a>
                                     </td>
                                     
-                                   <!-- <td>
+                                    <td>
 
                                     <a href="/select_marking_place/{{$data->year}}/{{$data->paper_quntity}}/{{$data->distric}}/{{$data->medium}}/{{$data->subject}}/{{$data->exam_type}}"><button type="button" class="btn btn-info">Marking Place</button></a>
-                                    </td>-->
+                                    </td>
                                     <td>
                                    
                                    <a href="/edit_paper_bundle_data/{{$data->id}}/{{$data->exam_type}}"><button type="button" class="btn btn-light">Edit</button></a>

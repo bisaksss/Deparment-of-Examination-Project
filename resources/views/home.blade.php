@@ -49,7 +49,7 @@
 
                 <div class="container_btn_img">
                     <img src="img/barcode_reader.jpg" alt="Snow" style="width:100%">
-                    <a href="#"><button type="button" class="btn btn-outline-secondary">Read Barcode</button></a>
+                    <a href="#"><button type="button" class="btn btn-outline-secondary">Read QR</button></a>
                 </div>
             
                    <!-- <div class="input-group-prepend">

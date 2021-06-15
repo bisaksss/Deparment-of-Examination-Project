@@ -106,7 +106,7 @@
 
                                             <div class="form-group row">
 
-                                                    <label for="bundle_number" class="col-md-4 col-form-label text-md-right">Bundel Number :</label>
+                                                    <label for="bundle_number" class="col-md-4 col-form-label text-md-right">Bundle Number :</label>
                                                     <div class="col-md-6">
                                                     <input type="number" name="bundle_number" class="form-control">
                                                     </div>

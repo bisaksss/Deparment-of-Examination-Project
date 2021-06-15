@@ -11,6 +11,8 @@ use App\admin_login;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Crypt;
 use Auth;
+use App\user;
+
 
 
 class manage_paper_details_controller extends Controller
@@ -94,27 +96,60 @@ class manage_paper_details_controller extends Controller
       {
        $data=ol_paper_details::where('year',$year)->get();
 
-       return view('genarate_qr_code')->with('table_data',$data);
+       return view('genarate_qr_code')->with('table_data',$data)->with('exam_name','O/L');;
           
        }
       elseif($al==2)
       {
        $data=al_paper_details::where('year',$year)->get();
 
-       return view('genarate_qr_code')->with('table_data',$data);
+       return view('genarate_qr_code')->with('table_data',$data)->with('exam_name','A/L');;
 
      }
        
      else
      {
         $data=ol_paper_details::all();
-        return view('genarate_qr_code')->with('table_data',$data);
+        return view('genarate_qr_code')->with('table_data',$data)->with('exam_name','O/L');;
      }
       
 
 
 
     }
+
+    public function admin_select_details_from_table(request $request)
+    {
+       $ol=$request->ol;
+        $al=$request->al;
+        $year=$request->year;
+        
+      if($ol==1)
+      {
+       $data=ol_paper_details::where('year',$year)->get();
+
+       return view('admin_genarate_qr_code')->with('table_data',$data)->with('exam_name','O/L');
+          
+       }
+      elseif($al==2)
+      {
+       $data=al_paper_details::where('year',$year)->get();
+
+       return view('admin_genarate_qr_code')->with('table_data',$data)->with('exam_name','A/L');
+
+     }
+       
+     else
+     {
+        $data=ol_paper_details::all();
+        return view('admin_genarate_qr_code')->with('table_data',$data)->with('exam_name','O/L');
+     }
+      
+
+
+
+    }
+
 
 
     public function mark_as_complete($id,$exam_type)
@@ -1572,6 +1607,7 @@ class manage_paper_details_controller extends Controller
         {
             if(Hash::check( $enter_password, $user->password))
             {
+               /* return view('admin_dashbord')->with('user_name',$user);*/
                 return view('admin_dashbord')->with('user_name',$user);
             }
             else 
@@ -1675,7 +1711,51 @@ class manage_paper_details_controller extends Controller
 
         return view('marking_places_al')->with('marking_place_data',$data);
     }
- 
+
+
+    public function manage_users_page_data()
+    {
+        $users_details=new user;
+        $data=user::all();
+
+        return view('manage_users')->with('user_detail',$data);
+
+    }
+
+    public function delete_user($id)
+    {
+          $data=user::find($id);
+          $data->delete();
+          return redirect()->back();
+
+    }
+
+    public function clear_login(Request $request)
+    {
+        Auth::logout();
+        return view('welcome');
+    }
+    
+    public function verify_user($id)
+    {
+           $data=user::find($id); 
+
+           $data->remember_token=1;
+           $data->save();
+           return redirect()->back();
+    }
+    public function un_verify_user($id)
+    {
+           $data=user::find($id); 
+
+           $data->remember_token=null;
+           $data->save();
+           return redirect()->back();
+    }
+
+
+
+
 
   
 

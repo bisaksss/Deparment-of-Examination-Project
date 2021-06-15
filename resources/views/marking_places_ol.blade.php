@@ -81,12 +81,12 @@
     <table class="table table-dark">
                                     <tr>
                                     <th>ID</th>
-                                    <th>Distric</th>
+                                    <th>District</th>
                                     <th>Place</th>
                                     <th>Medium</th>
                                     <th>Subject</th>
 
-                                    <th>Paper Quntity</th>
+                                    <th>Paper Quantity</th>
                                     <th>Year</th>
                                     </tr>
                                     @foreach($marking_place_data as $data)
