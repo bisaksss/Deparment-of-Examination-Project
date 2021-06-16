@@ -108,7 +108,7 @@
 
                                                     <label for="bundle_number" class="col-md-4 col-form-label text-md-right">Bundle Number :</label>
                                                     <div class="col-md-6">
-                                                    <input type="number" name="bundle_number" class="form-control">
+                                                    <input type="number" name="bundle_number" class="form-control" required>
                                                     </div>
 
                                                     <br>
@@ -116,7 +116,7 @@
 
                                                     <label for="paper_quntity" class="col-md-4 col-form-label text-md-right">Paper Quantity :</label>
                                                     <div class="col-md-6">
-                                                    <input type="number" name="paper_quntity" class="form-control">
+                                                    <input type="number" name="paper_quntity" class="form-control" required>
                                                     </div>
 
                                                     <br>
@@ -124,7 +124,7 @@
                                                 
                                                     <label for="year" class="col-md-4 col-form-label text-md-right">Year :</label>
                                                     <div class="col-md-6">
-                                                    <input type="number" name="year" class="form-control" value="2020">
+                                                    <input type="number" name="year" class="form-control" value="2020" required>
                                                     </div>
 
                                                     <br>
@@ -133,7 +133,7 @@
 
                                                     <label for="distric" class="col-md-4 col-form-label text-md-right">District</label>
                                                         <div class="col-md-6">
-                                                        <select class="form-control" id="distric" name="distric">
+                                                        <select class="form-control" id="distric" name="distric" required>
                                                         <option>Ampara</option>
                                                         <option>Anuradhapura</option>
                                                         <option>Badulla</option>
@@ -169,7 +169,7 @@
 
                                                     <label for="writing_place" class="col-md-4 col-form-label text-md-right">Writing Place :</label>
                                                     <div class="col-md-6">
-                                                    <input type="text" name="writing_place" class="form-control">
+                                                    <input type="text" name="writing_place" class="form-control" required>
                                                     </div>
 
                                                     <br>
@@ -179,7 +179,7 @@
                                                    
                                                     <label for="medium"  class="col-md-4 col-form-label text-md-right">Select Medium</label>
                                                     <div class="col-md-6">
-                                                    <select class="form-control" id="medium" name="medium">
+                                                    <select class="form-control" id="medium" name="medium" required>
                                                     <option>Sinhala</option>
                                                     <option>Tamil</option>
                                                     <option>English</option>
@@ -194,7 +194,7 @@
 
                                                     <label for="subject" class="col-md-4 col-form-label text-md-right">Subject :</label>
                                                     <div class="col-md-6">
-                                                    <input type="text" name="subject" class="form-control">
+                                                    <input type="text" name="subject" class="form-control" required>
                                                     </div>
 
                                                     <br>

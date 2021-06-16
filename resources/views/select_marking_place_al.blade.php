@@ -108,7 +108,7 @@
                 <th>Distric</th>
                 <th>Place</th>
                 <th>Mark as Selected</th>
-                <th>Genarate QR Code</th>
+                <th>Generate QR Code</th>
            
                 </tr>
                
@@ -132,7 +132,7 @@
                 </td>
 
 
-                <td><a href="/generate_qr_code_al_marking_place/{{$data->id}}"><button class="btn btn-danger">Genarate QR</button></a></td>
+                <td><a href="/generate_qr_code_al_marking_place/{{$data->id}}"><button class="btn btn-danger">Generate QR</button></a></td>
 
                 </tr>
                 

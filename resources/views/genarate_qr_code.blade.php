@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Genarate QR Code</title>
+    <title>Generate QR Code</title>
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
@@ -77,7 +77,7 @@
                           
                          
                     <div class="text-center">
-                        <h1>Genarate QR code</h1>
+                        <h1>Generate QR code</h1>
 
                         <form action="select_details" method="get" class="form-group form_dec">
                                 {{csrf_field()}}
@@ -113,7 +113,7 @@
                                     <th>Selected Medium</th>
                                     <th>Subject</th>
                                     <th>Action</th>
-                                    <th>Genarate QR</th>
+                                    <th>Generate QR</th>
                                    <!-- <th>Select</th>-->
                                     </tr>
                                     </thead>
@@ -140,7 +140,7 @@
                                     </td>
                               
                                     <td>
-                                    <a href="/genarate_qr_code_page/{{$data->id}}/{{$data->exam_type}}"><button class="btn btn-warning">Genarate QR</button></a>
+                                    <a href="/genarate_qr_code_page/{{$data->id}}/{{$data->exam_type}}"><button class="btn btn-warning">Generate QR</button></a>
                                     </td>
                                     
                                    <!-- <td>

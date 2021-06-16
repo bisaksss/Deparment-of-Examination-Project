@@ -298,6 +298,7 @@ class manage_paper_details_controller extends Controller
 
 
                 $data=marking_places_ol::where('distric','=','Badulla')
+				->orwhere('distric','=','Ampara')
                 ->orwhere('distric','=','Baticaloa')
                 ->orwhere('distric','=','Hambanthota')
                 ->orwhere('distric','=','Jaffna')
@@ -1740,7 +1741,7 @@ class manage_paper_details_controller extends Controller
     {
            $data=user::find($id); 
 
-           $data->remember_token=1;
+           $data->active=1;
            $data->save();
            return redirect()->back();
     }
@@ -1748,7 +1749,7 @@ class manage_paper_details_controller extends Controller
     {
            $data=user::find($id); 
 
-           $data->remember_token=null;
+           $data->active=0;
            $data->save();
            return redirect()->back();
     }

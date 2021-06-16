@@ -98,7 +98,7 @@
                                               
                                                         <label for="distric" class="col-md-4 col-form-label text-md-right">District</label>
                                                         <div class="col-md-6">
-                                                        <select class="form-control" id="distric" name="distric">
+                                                        <select class="form-control" id="distric" name="distric" required>
                                                         <option>Ampara</option>
                                                         <option>Anuradhapura</option>
                                                         <option>Badulla</option>
@@ -135,7 +135,7 @@
 
                                                     <label for="place" class="col-md-4 col-form-label text-md-right">Place :</label>
                                                     <div class="col-md-6">
-                                                    <input type="text" name="place" class="form-control" value="">
+                                                    <input type="text" name="place" class="form-control" value="" required>
                                                     </div>
                                                  
 
@@ -144,7 +144,7 @@
 
                                                     <label for="medium" class="col-md-4 col-form-label text-md-right">Medium</label>
                                                         <div class="col-md-6">
-                                                        <select class="form-control" id="medium" name="medium">
+                                                        <select class="form-control" id="medium" name="medium" required>
                                                         <option>Sinhala</option>
                                                         <option>Tamil</option>
                                                         <option>English</option>
@@ -156,7 +156,7 @@
 
                                                     <label for="subject" class="col-md-4 col-form-label text-md-right">Subject :</label>
                                                     <div class="col-md-6">
-                                                    <input type="text" name="subject" class="form-control" value="">
+                                                    <input type="text" name="subject" class="form-control" value="" required>
                                                     </div>
                                                  
 
@@ -165,7 +165,7 @@
                                                 
                                                     <label for="paper_quntity" class="col-md-4 col-form-label text-md-right">Paper Quantity :</label>
                                                     <div class="col-md-6">
-                                                    <input type="number" name="paper_quntity" class="form-control">
+                                                    <input type="number" name="paper_quntity" class="form-control" required>
                                                     </div>
 
 
@@ -174,7 +174,7 @@
 
                                                     <label for="year" class="col-md-4 col-form-label text-md-right">Year :</label>
                                                     <div class="col-md-6">
-                                                    <input type="number" name="year" class="form-control" value="2020">
+                                                    <input type="number" name="year" class="form-control" value="2020" required>
                                                     </div>
 
                                                     <br>

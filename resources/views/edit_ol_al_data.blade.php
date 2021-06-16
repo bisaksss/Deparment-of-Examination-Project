@@ -129,7 +129,7 @@ p.copyright {
 
                                                     <label for="bundle_number" class="col-md-4 col-form-label text-md-right">Bundle Number :</label>
                                                     <div class="col-md-6">
-                                                    <input type="number" name="bundle_number" class="form-control" value="{{$table_data->bundle_number}}">
+                                                    <input type="number" name="bundle_number" class="form-control" value="{{$table_data->bundle_number}}" required>
                                                     </div>
 
                                                     <br>
@@ -137,7 +137,7 @@ p.copyright {
 
                                                     <label for="paper_quntity" class="col-md-4 col-form-label text-md-right">Paper Quantity :</label>
                                                     <div class="col-md-6">
-                                                    <input type="number" name="paper_quntity" class="form-control" value="{{$table_data->paper_quntity}}">
+                                                    <input type="number" name="paper_quntity" class="form-control" value="{{$table_data->paper_quntity}}" required>
                                                     </div>
 
                                                     <br>
@@ -145,7 +145,7 @@ p.copyright {
                                                 
                                                     <label for="year" class="col-md-4 col-form-label text-md-right">Year :</label>
                                                     <div class="col-md-6">
-                                                    <input type="number" name="year" class="form-control"  value="{{$table_data->year}}" >
+                                                    <input type="number" name="year" class="form-control"  value="{{$table_data->year}}" required>
                                                     </div>
 
                                                     <br>
@@ -156,7 +156,7 @@ p.copyright {
                                                     
                                                         <div class="col-md-6">
                                                    
-                                                        <select class="form-control" id="distric" name="distric" >
+                                                        <select class="form-control" id="distric" name="distric" required>
                                                         <option>Ampara</option>
                                                         <option>Anuradhapura</option>
                                                         <option>Badulla</option>
@@ -193,7 +193,7 @@ p.copyright {
                                                         
                                                     <label for="writing_place" class="col-md-4 col-form-label text-md-right">Writing Place :</label>
                                                     <div class="col-md-6">
-                                                    <input type="text" name="writing_place" class="form-control" value="{{$table_data->writing_place}}">
+                                                    <input type="text" name="writing_place" class="form-control" value="{{$table_data->writing_place}}" required>
                                                     </div>
 
                                                     <br>
@@ -203,7 +203,7 @@ p.copyright {
                                                    
                                                     <label for="medium"  class="col-md-4 col-form-label text-md-right">Select Medium</label>
                                                     <div class="col-md-6">
-                                                    <select class="form-control" id="medium" name="medium" value="{{$table_data->medium}}">
+                                                    <select class="form-control" id="medium" name="medium" value="{{$table_data->medium}}" required>
                                                     <option>Sinhala</option>
                                                     <option>Tamil</option>
                                                     <option>English</option>
@@ -219,7 +219,7 @@ p.copyright {
 
                                                     <label for="subject" class="col-md-4 col-form-label text-md-right">Subject :</label>
                                                     <div class="col-md-6">
-                                                    <input type="text" name="subject" class="form-control"value="{{$table_data->subject}}">
+                                                    <input type="text" name="subject" class="form-control"value="{{$table_data->subject}}" required>
                                                     </div>
 
                                                     <br>
@@ -232,8 +232,7 @@ p.copyright {
 
 
                                             <button type="submit" class="btn btn-primary">Submit</button>
-                                            &nbsp;
-                                            <button type="reset" value="Reset" class="btn btn-warning">Clear</button>
+                                            
 
                                             </form>
                                      </div>
