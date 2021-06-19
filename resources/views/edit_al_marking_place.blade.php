@@ -156,36 +156,37 @@
                                                         <label for="distric" class="col-md-4 col-form-label text-md-right">District</label>
                                                         <div class="col-md-6">
                                                         <select class="form-control" id="distric" name="distric" required>
-                                                        <option>Ampara</option>
-                                                        <option>Anuradhapura</option>
-                                                        <option>Badulla</option>
-                                                        <option>Batticaloa</option>
-                                                        <option>Colombo</option>
-                                                        <option>Galle</option>
-                                                        <option>Gampaha</option>
-                                                        <option>Hambantota</option>
-                                                        <option>Jaffna</option>
-                                                        <option>Kalutara</option>
-                                                        <option>Kandy</option>
-                                                        <option>Kegalle</option>
-                                                        <option>Kilinochchi</option>
-                                                        <option>Kurunegala</option>
-                                                        <option>Mannar</option>
-                                                        <option>Matale</option>
-                                                        <option>Matara</option>
-                                                        <option>Monaragala</option>
-                                                        <option>Mullaitivu</option>
-                                                        <option>Nuwara Eliya</option>
-                                                        <option>Polonnaruwa</option>
-                                                        <option>Puttalam</option>
-                                                        <option>Ratnapura</option>
-                                                        <option>Trincomalee</option>
-                                                        <option>Vavuniya</option>
+                                                        <option {{($table_data->distric=="Ampara") ? "selected":""}}>Ampara</option>
+                                                        <option {{($table_data->distric=="Anuradhapura") ? "selected":""}}>Anuradhapura</option>
+                                                        <option {{($table_data->distric=="Badulla") ? "selected":""}}>Badulla</option>
+                                                        <option {{($table_data->distric=="Batticaloa") ? "selected":""}}>Batticaloa</option>
+                                                        <option {{($table_data->distric=="Colombo") ? "selected":""}}>Colombo</option>
+                                                        <option {{($table_data->distric=="Galle") ? "selected":""}}>Galle</option>
+                                                        <option {{($table_data->distric=="Gampaha") ? "selected":""}}>Gampaha</option>
+                                                        <option {{($table_data->distric=="Hambantota") ? "selected":""}}>Hambantota</option>
+                                                        <option {{($table_data->distric=="Jaffna") ? "selected":""}}>Jaffna</option>
+                                                        <option {{($table_data->distric=="Kalutara") ? "selected":""}}>Kalutara</option>
+                                                        <option {{($table_data->distric=="Kandy") ? "selected":""}}>Kandy</option>
+                                                        <option {{($table_data->distric=="Kegalle") ? "selected":""}}>Kegalle</option>
+                                                        <option {{($table_data->distric=="Kilinochchi") ? "selected":""}}>Kilinochchi</option>
+                                                        <option {{($table_data->distric=="Kurunegala") ? "selected":""}}>Kurunegala</option>
+                                                        <option {{($table_data->distric=="Mannar") ? "selected":""}}>Mannar</option>
+                                                        <option {{($table_data->distric=="Matale") ? "selected":""}}>Matale</option>
+                                                        <option {{($table_data->distric=="Matara") ? "selected":""}}>Matara</option>
+                                                        <option {{($table_data->distric=="Monaragala") ? "selected":""}}>Monaragala</option>
+                                                        <option {{($table_data->distric=="Mullaitivu") ? "selected":""}}>Mullaitivu</option>
+                                                        <option {{($table_data->distric=="Nuwara Eliya") ? "selected":""}}>Nuwara Eliya</option>
+                                                        <option {{($table_data->distric=="Polonnaruwa") ? "selected":""}}>Polonnaruwa</option>
+                                                        <option {{($table_data->distric=="Puttalam") ? "selected":""}}>Puttalam</option>
+                                                        <option {{($table_data->distric=="Ratnapura") ? "selected":""}}>Ratnapura</option>
+                                                        <option {{($table_data->distric=="Trincomalee") ? "selected":""}}>Trincomalee</option>
+                                                        <option {{($table_data->distric=="Vavuniya") ? "selected":""}}>Vavuniya</option>
+                                                        
                                                         
                                                         </select>
                                                     
                                                         </div>
-                                                        <div class="text-muted">{{$table_data->distric}}</div>
+                                                        
 
                                                     <br>
                                                     <br>
@@ -203,12 +204,12 @@
                                                     <label for="medium" class="col-md-4 col-form-label text-md-right">Medium</label>
                                                         <div class="col-md-6">
                                                         <select class="form-control" id="medium" name="medium" required>
-                                                        <option>Sinhala</option>
-                                                        <option>Tamil</option>
-                                                        <option>English</option>
+                                                        <option {{($table_data->medium=="Sinhala") ? "selected":""}}>Sinhala</option>
+                                                        <option {{($table_data->medium=="Tamil") ? "selected":""}}>Tamil</option>
+                                                        <option {{($table_data->medium=="English") ? "selected":""}}>English</option>
                                                         </select>
                                                         </div>
-                                                        <div class="text-muted">{{$table_data->medium}}</div>
+                                                      
                                                     <br>
                                                     <br>
 
